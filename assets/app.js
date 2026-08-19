@@ -1,4 +1,4 @@
-const REPO = "your-username/your-repo";
+const REPO = "duncan1315/TicketNotify";
 
 function setupLinks() {
   document.getElementById("add-route-link").href =
