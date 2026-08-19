@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+:root {
+  --bg: #f3f4f1;
+  --surface: #ffffff;
+  --ink: #14181c;
+  --ink-muted: #5b6167;
+  --border: #dedcd3;
+  --teal: #1f5c57;
+  --teal-tint: #e3eeec;
+  --tile-bg: #14181c;
+  --tile-fg: #f3f4f1;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+.page-header {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 48px 24px 40px;
+}
+
+.header-inner {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal-tint);
+  margin: 0 0 8px;
+}
+
+.page-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+}
+
+.subtitle {
+  color: #b7bcc0;
+  max-width: 46ch;
+  margin: 0;
+}
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.button:hover {
+  border-color: var(--teal);
+}
+
+.button-primary {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--bg);
+}
+
+.button-primary:hover {
+  background: #184a46;
+}
+
+.button:focus-visible,
+.route-card a:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.route-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  color: var(--ink-muted);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  text-align: center;
+}
+
+.route-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  border-top: 4px solid var(--border);
+  padding: 20px;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.route-card.status-under {
+  border-top-color: var(--teal);
+}
+
+.route-card:hover {
+  box-shadow: 0 6px 16px rgba(20, 24, 28, 0.08);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .route-card:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.route-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.route-card-header h2 {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.status-under {
+  background: var(--teal-tint);
+  color: var(--teal);
+}
+
+.status-watching {
+  background: #ecebe6;
+  color: var(--ink-muted);
+}
+
+.route-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+  margin: 0 0 16px;
+}
+
+.route-details div {
+  min-width: 0;
+}
+
+.route-details dt {
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-bottom: 2px;
+}
+
+.route-details dd {
+  margin: 0;
+  font-size: 14px;
+}
+
+.flap-price {
+  display: flex;
+  gap: 3px;
+  margin-top: 4px;
+}
+
+.flap-char {
+  background: var(--tile-bg);
+  color: var(--tile-fg);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 15px;
+  padding: 3px 5px;
+  border-radius: 3px;
+  min-width: 10px;
+  text-align: center;
+}
+
+.page-footer {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+  color: var(--ink-muted);
+  font-size: 13px;
+}

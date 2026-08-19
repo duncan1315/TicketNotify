@@ -1,0 +1,44 @@
+name: Parse route issue
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  parse:
+    if: contains(github.event.issue.labels.*.name, 'track-route')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Parse issue body into route config
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: python scraper/parse_issue.py
+
+      - name: Commit route config
+        run: |
+          git config user.name "route-bot"
+          git config user.email "route-bot@users.noreply.github.com"
+          git add routes/
+          git diff --cached --quiet || git commit -m "Add or update route from issue #${{ github.event.issue.number }}"
+          git push
+
+      - name: Comment on issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: "Route saved. It will run on the next scheduled check, or comment `/check ORIGIN DESTINATION DATE` here to run it now.",
+            });

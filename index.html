@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flight price tracker</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-inner">
+    <p class="eyebrow">Departures watch</p>
+    <h1>Flight price tracker</h1>
+    <p class="subtitle">Fares are checked automatically. This board shows the lowest price seen for each route.</p>
+  </div>
+</header>
+
+<main>
+  <div class="actions">
+    <a id="add-route-link" class="button button-primary" href="#" target="_blank" rel="noopener">Add a route</a>
+    <a id="manual-check-link" class="button" href="#" target="_blank" rel="noopener">Run a manual check</a>
+  </div>
+
+  <section id="route-list" class="route-list" aria-live="polite">
+    <p class="empty-state" id="empty-state">Loading routes&hellip;</p>
+  </section>
+</main>
+
+<footer class="page-footer">
+  <p>Runs on a schedule via GitHub Actions. Alerts are sent to Discord or Telegram when a fare drops below budget.</p>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+name: Track a new flight route
+description: Add a route for the price tracker to watch on trip.com
+title: "[route] "
+labels:
+  - track-route
+body:
+  - type: input
+    id: origin
+    attributes:
+      label: Origin airport code
+      description: IATA code, for example TPE
+      placeholder: TPE
+    validations:
+      required: true
+
+  - type: input
+    id: destination
+    attributes:
+      label: Destination airport code
+      placeholder: NRT
+    validations:
+      required: true
+
+  - type: input
+    id: earliest_date
+    attributes:
+      label: Earliest departure date
+      description: Format YYYY-MM-DD
+      placeholder: "2026-09-01"
+    validations:
+      required: true
+
+  - type: input
+    id: latest_date
+    attributes:
+      label: Latest departure date
+      description: Format YYYY-MM-DD
+      placeholder: "2026-09-15"
+    validations:
+      required: true
+
+  - type: input
+    id: budget
+    attributes:
+      label: Budget threshold
+      description: Alert when a fare is at or below this amount
+      placeholder: "6000"
+    validations:
+      required: true
+
+  - type: input
+    id: currency
+    attributes:
+      label: Currency code
+      placeholder: TWD
+    validations:
+      required: true
+
+  - type: input
+    id: max_duration
+    attributes:
+      label: Max flight duration in minutes
+      placeholder: "300"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: notify_channel
+    attributes:
+      label: Notification channel
+      options:
+        - discord
+        - telegram
+    validations:
+      required: true
