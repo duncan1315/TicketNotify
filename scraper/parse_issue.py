@@ -6,15 +6,31 @@ import sys
 FIELD_MAP = {
     "Origin airport code": "origin",
     "Destination airport code": "destination",
+    "Trip type": "trip_type",
     "Earliest departure date": "earliest_date",
     "Latest departure date": "latest_date",
+    "Return date": "return_date",
     "Budget threshold": "budget",
     "Currency code": "currency",
     "Max flight duration in minutes": "max_duration_minutes",
     "Notification channel": "notify_channel",
 }
 
-REQUIRED_FIELDS = list(FIELD_MAP.values())
+REQUIRED_FIELDS = [
+    "origin",
+    "destination",
+    "trip_type",
+    "earliest_date",
+    "latest_date",
+    "budget",
+    "currency",
+    "max_duration_minutes",
+    "notify_channel",
+]
+
+
+def normalize_trip_type(value):
+    return value.strip().lower().replace(" ", "_")
 
 
 def parse_body(body):
@@ -35,8 +51,10 @@ def build_route(issue_number, parsed):
         "issue_number": int(issue_number),
         "origin": parsed["origin"].upper(),
         "destination": parsed["destination"].upper(),
+        "trip_type": normalize_trip_type(parsed["trip_type"]),
         "earliest_date": parsed["earliest_date"],
         "latest_date": parsed["latest_date"],
+        "return_date": parsed.get("return_date", "").strip() or None,
         "budget": float(parsed["budget"]),
         "currency": parsed["currency"].upper(),
         "max_duration_minutes": int(parsed["max_duration_minutes"]),
@@ -53,6 +71,14 @@ def main():
     missing = [key for key in REQUIRED_FIELDS if key not in parsed]
     if missing:
         print(f"Missing fields: {missing}")
+        sys.exit(1)
+
+    trip_type = normalize_trip_type(parsed["trip_type"])
+    if trip_type not in ("one_way", "round_trip"):
+        print(f"Trip type must be 'One way' or 'Round trip', got: {parsed['trip_type']}")
+        sys.exit(1)
+    if trip_type == "round_trip" and not parsed.get("return_date", "").strip():
+        print("Return date is required for round trip routes")
         sys.exit(1)
 
     route = build_route(issue_number, parsed)

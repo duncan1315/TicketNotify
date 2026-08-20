@@ -27,12 +27,15 @@ def load_active_routes():
 def build_search_url(route):
     # Only searches route["earliest_date"]; scanning the full date range
     # is a possible enhancement, see README.
-    return (
-        f"{TRIP_DOMAIN}/flights/showfarefirst"
-        f"?dcity={route['origin']}&acity={route['destination']}"
-        f"&ddate={route['earliest_date']}&triptype=ow&class=y&quantity=1"
-        f"&locale={TRIP_LOCALE}&curr={route['currency']}"
-    )
+    params = f"?dcity={route['origin']}&acity={route['destination']}&ddate={route['earliest_date']}"
+
+    if route.get("trip_type") == "round_trip" and route.get("return_date"):
+        params += f"&rdate={route['return_date']}&triptype=rt"
+    else:
+        params += "&triptype=ow"
+
+    params += f"&class=y&quantity=1&locale={TRIP_LOCALE}&curr={route['currency']}"
+    return f"{TRIP_DOMAIN}/flights/showfarefirst{params}"
 
 
 def extract_flights(page):

@@ -46,10 +46,16 @@ function renderRouteCard(route) {
 
   header.append(title, badge);
 
+  const isRoundTrip = route.trip_type === "round_trip";
+  const dateRange = isRoundTrip && route.return_date
+    ? `${route.earliest_date} to ${route.latest_date}, return ${route.return_date}`
+    : `${route.earliest_date} to ${route.latest_date}`;
+
   const details = document.createElement("dl");
   details.className = "route-details";
   details.append(
-    detailRow("Dates", `${route.earliest_date} to ${route.latest_date}`),
+    detailRow("Trip type", isRoundTrip ? "Round trip" : "One way"),
+    detailRow("Dates", dateRange),
     detailRow("Budget", `${route.budget} ${route.currency}`),
     detailRow("Max duration", `${route.max_duration_minutes} min`),
     detailRow("Last checked", formatTimestamp(latest.checked_at)),

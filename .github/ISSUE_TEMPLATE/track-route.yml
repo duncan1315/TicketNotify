@@ -21,6 +21,16 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    id: trip_type
+    attributes:
+      label: Trip type
+      options:
+        - One way
+        - Round trip
+    validations:
+      required: true
+
   - type: input
     id: earliest_date
     attributes:
@@ -38,6 +48,15 @@ body:
       placeholder: "2026-09-15"
     validations:
       required: true
+
+  - type: input
+    id: return_date
+    attributes:
+      label: Return date
+      description: Only needed for round trip. Format YYYY-MM-DD
+      placeholder: "2026-09-20"
+    validations:
+      required: false
 
   - type: input
     id: budget
