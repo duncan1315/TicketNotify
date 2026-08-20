@@ -29,6 +29,15 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python scraper/scrape.py
 
+      - name: Upload debug snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scrape-debug-${{ github.run_id }}
+          path: scraper/debug
+          if-no-files-found: ignore
+          retention-days: 3
+
       - name: Commit updated data
         run: |
           git config user.name "route-bot"

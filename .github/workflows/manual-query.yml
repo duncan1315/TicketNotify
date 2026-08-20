@@ -55,6 +55,15 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python manual_query.py
 
+      - name: Upload debug snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: manual-query-debug-${{ github.run_id }}
+          path: scraper/debug
+          if-no-files-found: ignore
+          retention-days: 3
+
       - name: Reply on issue
         if: github.event_name == 'issue_comment'
         uses: actions/github-script@v7

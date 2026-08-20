@@ -9,9 +9,20 @@ from notify import send_notification
 
 ROUTES_DIR = Path("routes")
 DATA_DIR = Path("data")
+DEBUG_DIR = Path(__file__).resolve().parent / "debug"
 
 TRIP_DOMAIN = os.environ.get("TRIP_DOMAIN", "https://us.trip.com")
 TRIP_LOCALE = os.environ.get("TRIP_LOCALE", "en-US")
+
+
+def save_debug_snapshot(page, name):
+    DEBUG_DIR.mkdir(exist_ok=True)
+    try:
+        page.screenshot(path=str(DEBUG_DIR / f"{name}.png"), full_page=True)
+        (DEBUG_DIR / f"{name}.html").write_text(page.content(), encoding="utf-8")
+        print(f"Saved debug snapshot to {DEBUG_DIR}/{name}.png and .html")
+    except Exception as exc:
+        print(f"Could not save debug snapshot for {name}: {exc}")
 
 
 def load_active_routes():
@@ -85,6 +96,7 @@ def scrape_route(browser, route):
         flights = extract_flights(page)
     except Exception as exc:
         print(f"Failed to scrape {route['id']}: {exc}")
+        save_debug_snapshot(page, route["id"])
         flights = []
     finally:
         page.close()

@@ -3,7 +3,7 @@ import os
 from playwright.sync_api import sync_playwright
 
 from notify import send_notification
-from scrape import build_search_url, evaluate_matches, extract_flights
+from scrape import build_search_url, evaluate_matches, extract_flights, save_debug_snapshot
 
 RESULT_FILE = "manual_query_result.txt"
 
@@ -64,8 +64,13 @@ def main():
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page()
-        page.goto(build_search_url(route), timeout=60000)
-        flights = extract_flights(page)
+        try:
+            page.goto(build_search_url(route), timeout=60000)
+            flights = extract_flights(page)
+        except Exception as exc:
+            print(f"Manual query failed: {exc}")
+            save_debug_snapshot(page, "manual")
+            flights = []
         browser.close()
 
     matches = evaluate_matches(route, flights)
@@ -79,7 +84,7 @@ def main():
             f"and max duration {route['max_duration_minutes']} min"
         )
     else:
-        lines.append("No flights found")
+        lines.append("No flights found. Check the run's debug-snapshot artifact for a screenshot of what the page showed.")
 
     write_result("\n".join(lines))
 
