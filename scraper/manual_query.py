@@ -3,7 +3,14 @@ import os
 from playwright.sync_api import sync_playwright
 
 from notify import send_notification
-from scrape import build_search_url, evaluate_matches, extract_flights, save_debug_snapshot
+from scrape import (
+    STEALTH,
+    build_search_url,
+    evaluate_matches,
+    extract_flights,
+    new_context,
+    save_debug_snapshot,
+)
 
 RESULT_FILE = "manual_query_result.txt"
 
@@ -61,9 +68,10 @@ def main():
         write_result("Could not parse the query. Use: /check ORIGIN DESTINATION DATE [BUDGET] [MAX_DURATION_MINUTES]")
         return
 
-    with sync_playwright() as p:
+    with STEALTH.use_sync(sync_playwright()) as p:
         browser = p.chromium.launch()
-        page = browser.new_page()
+        context = new_context(browser)
+        page = context.new_page()
         try:
             page.goto(build_search_url(route), timeout=60000)
             flights = extract_flights(page)
@@ -71,6 +79,7 @@ def main():
             print(f"Manual query failed: {exc}")
             save_debug_snapshot(page, "manual")
             flights = []
+        context.close()
         browser.close()
 
     matches = evaluate_matches(route, flights)

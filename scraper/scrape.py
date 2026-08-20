@@ -4,6 +4,7 @@ import time
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
+from playwright_stealth import Stealth
 
 from notify import send_notification
 
@@ -13,6 +14,23 @@ DEBUG_DIR = Path(__file__).resolve().parent / "debug"
 
 TRIP_DOMAIN = os.environ.get("TRIP_DOMAIN", "https://us.trip.com")
 TRIP_LOCALE = os.environ.get("TRIP_LOCALE", "en-US")
+
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+)
+VIEWPORT = {"width": 1366, "height": 768}
+
+STEALTH = Stealth()
+
+
+def new_context(browser):
+    return browser.new_context(
+        user_agent=USER_AGENT,
+        locale=TRIP_LOCALE,
+        viewport=VIEWPORT,
+        extra_http_headers={"Accept-Language": f"{TRIP_LOCALE},en;q=0.9"},
+    )
 
 
 def save_debug_snapshot(page, name):
@@ -89,8 +107,8 @@ def parse_duration(text):
     return hours * 60 + minutes
 
 
-def scrape_route(browser, route):
-    page = browser.new_page()
+def scrape_route(context, route):
+    page = context.new_page()
     try:
         page.goto(build_search_url(route), timeout=60000)
         flights = extract_flights(page)
@@ -146,16 +164,18 @@ def main():
         return
 
     summaries = []
-    with sync_playwright() as p:
+    with STEALTH.use_sync(sync_playwright()) as p:
         browser = p.chromium.launch()
+        context = new_context(browser)
         for route in routes:
-            flights = scrape_route(browser, route)
+            flights = scrape_route(context, route)
             matches = evaluate_matches(route, flights)
             latest = save_results(route, flights, matches)
             summaries.append({**route, "latest": latest})
 
             if matches:
                 send_notification(route, matches)
+        context.close()
         browser.close()
 
     build_index(summaries)
