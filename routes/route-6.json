@@ -1,0 +1,15 @@
+{
+  "id": "route-6",
+  "issue_number": 6,
+  "origin": "TPE",
+  "destination": "NRT",
+  "trip_type": "round_trip",
+  "earliest_date": "2026-09-01",
+  "latest_date": "2026-09-02",
+  "return_date": "2026-09-12",
+  "budget": 20000.0,
+  "currency": "TWD",
+  "max_duration_minutes": 300,
+  "notify_channel": "discord",
+  "active": true
+}
