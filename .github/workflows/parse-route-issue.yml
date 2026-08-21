@@ -2,7 +2,7 @@ name: Parse route issue
 
 on:
   issues:
-    types: [opened, edited, labeled]
+    types: [opened, edited]
 
 jobs:
   parse:
