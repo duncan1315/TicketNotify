@@ -32,20 +32,11 @@ body:
       required: true
 
   - type: input
-    id: earliest_date
+    id: departure_date
     attributes:
-      label: Earliest departure date
+      label: Departure date
       description: Format YYYY-MM-DD
       placeholder: "2026-09-01"
-    validations:
-      required: true
-
-  - type: input
-    id: latest_date
-    attributes:
-      label: Latest departure date
-      description: Format YYYY-MM-DD
-      placeholder: "2026-09-15"
     validations:
       required: true
 
@@ -72,14 +63,6 @@ body:
     attributes:
       label: Currency code
       placeholder: TWD
-    validations:
-      required: true
-
-  - type: input
-    id: max_duration
-    attributes:
-      label: Max flight duration in minutes
-      placeholder: "300"
     validations:
       required: true
 

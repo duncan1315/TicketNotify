@@ -48,8 +48,8 @@ function renderRouteCard(route) {
 
   const isRoundTrip = route.trip_type === "round_trip";
   const dateRange = isRoundTrip && route.return_date
-    ? `${route.earliest_date} to ${route.latest_date}, return ${route.return_date}`
-    : `${route.earliest_date} to ${route.latest_date}`;
+    ? `${route.date}, return ${route.return_date}`
+    : route.date;
 
   const details = document.createElement("dl");
   details.className = "route-details";
@@ -57,7 +57,6 @@ function renderRouteCard(route) {
     detailRow("Trip type", isRoundTrip ? "Round trip" : "One way"),
     detailRow("Dates", dateRange),
     detailRow("Budget", `${route.budget} ${route.currency}`),
-    detailRow("Max duration", `${route.max_duration_minutes} min`),
     detailRow("Last checked", formatTimestamp(latest.checked_at)),
   );
 
