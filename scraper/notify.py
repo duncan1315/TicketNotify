@@ -1,5 +1,6 @@
 import json
 import os
+import urllib.error
 import urllib.request
 
 
@@ -14,9 +15,12 @@ def send_notification(route, matches):
 
 
 def send_discord(route, matches):
-    webhook_url = os.environ.get("DISCORD_WEBHOOK_URL")
+    webhook_url = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
     if not webhook_url:
         print("DISCORD_WEBHOOK_URL is not set, skipping notification")
+        return
+    if not webhook_url.startswith("https://discord.com/api/webhooks/") and not webhook_url.startswith("https://discordapp.com/api/webhooks/"):
+        print(f"DISCORD_WEBHOOK_URL does not look like a valid webhook URL (got: {webhook_url[:40]}...)")
         return
 
     payload = json.dumps({"content": build_message(route, matches)}).encode()
@@ -25,7 +29,13 @@ def send_discord(route, matches):
         data=payload,
         headers={"Content-Type": "application/json"},
     )
-    urllib.request.urlopen(request)
+    try:
+        urllib.request.urlopen(request)
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode(errors="replace")
+        print(f"Discord webhook failed: HTTP {exc.code} {exc.reason}")
+        print(f"Response body: {body}")
+        raise
 
 
 def send_telegram(route, matches):
