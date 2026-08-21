@@ -23,6 +23,13 @@ VIEWPORT = {"width": 1366, "height": 768}
 
 STEALTH = Stealth()
 
+# Card wrapper uses a per-card numeric suffix (u-flight-card-1, -2, ...),
+# so match on the prefix instead of an exact value.
+CARD_SELECTOR = "[data-testid^='u-flight-card-']"
+PRICE_SELECTOR = "[data-testid='u_price_info']"
+DURATION_SELECTOR = "[data-testid='flightInfoDuration']"
+AIRLINE_SELECTOR = "[data-testid='flights-name']"
+
 
 def new_context(browser):
     return browser.new_context(
@@ -54,9 +61,7 @@ def load_active_routes():
 
 
 def build_search_url(route):
-    # Only searches route["earliest_date"]; scanning the full date range
-    # is a possible enhancement, see README.
-    params = f"?dcity={route['origin']}&acity={route['destination']}&ddate={route['earliest_date']}"
+    params = f"?dcity={route['origin']}&acity={route['destination']}&ddate={route['date']}"
 
     if route.get("trip_type") == "round_trip" and route.get("return_date"):
         params += f"&rdate={route['return_date']}&triptype=rt"
@@ -67,18 +72,38 @@ def build_search_url(route):
     return f"{TRIP_DOMAIN}/flights/showfarefirst{params}"
 
 
+def wait_for_prices_to_settle(page, poll_ms=1000, max_wait_ms=15000, stable_polls=2):
+    stable = 0
+    last_count = -1
+    waited = 0
+    while waited < max_wait_ms:
+        page.wait_for_timeout(poll_ms)
+        waited += poll_ms
+        count = len(page.query_selector_all(PRICE_SELECTOR))
+        if count == last_count:
+            stable += 1
+            if stable >= stable_polls:
+                return
+        else:
+            stable = 0
+        last_count = count
+
+
 def extract_flights(page):
-    # Selectors below are a starting point and likely need to be verified
-    # against the live page in a browser, since trip.com's markup can
-    # change and was not verified against a running instance here.
-    page.wait_for_selector("[data-testid='flight-item']", timeout=30000)
-    cards = page.query_selector_all("[data-testid='flight-item']")
+    # Selectors confirmed against a real trip.com debug snapshot
+    # (see routes/route-3 debug HTML). Cards render as shimmer
+    # placeholders first and fill in with real data asynchronously,
+    # so wait_for_prices_to_settle lets more of them load before we
+    # read the page; placeholder cards without a price are skipped.
+    page.wait_for_selector(PRICE_SELECTOR, timeout=30000)
+    wait_for_prices_to_settle(page)
+    cards = page.query_selector_all(CARD_SELECTOR)
 
     flights = []
     for card in cards:
-        price_el = card.query_selector("[data-testid='price']")
-        duration_el = card.query_selector("[data-testid='duration']")
-        airline_el = card.query_selector("[data-testid='airline-name']")
+        price_el = card.query_selector(PRICE_SELECTOR)
+        duration_el = card.query_selector(DURATION_SELECTOR)
+        airline_el = card.query_selector(AIRLINE_SELECTOR)
 
         if not price_el or not duration_el:
             continue
@@ -126,7 +151,7 @@ def evaluate_matches(route, flights):
     for flight in flights:
         if flight["price"] is None:
             continue
-        if flight["price"] <= route["budget"] and flight["duration_minutes"] <= route["max_duration_minutes"]:
+        if flight["price"] <= route["budget"]:
             matches.append(flight)
     return matches
 

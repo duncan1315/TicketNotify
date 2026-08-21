@@ -26,20 +26,18 @@ def parse_command(body):
 
     origin, destination, date = parts[0], parts[1], parts[2]
     budget = float(parts[3]) if len(parts) > 3 else 999999
-    max_duration = int(parts[4]) if len(parts) > 4 else 1440
 
-    return build_route(origin, destination, date, budget, max_duration)
+    return build_route(origin, destination, date, budget)
 
 
-def build_route(origin, destination, date, budget, max_duration):
+def build_route(origin, destination, date, budget):
     return {
         "id": "manual",
         "origin": origin.upper(),
         "destination": destination.upper(),
-        "earliest_date": date,
+        "date": date,
         "budget": budget,
         "currency": os.environ.get("INPUT_CURRENCY", "USD"),
-        "max_duration_minutes": max_duration,
         "notify_channel": "discord",
     }
 
@@ -53,7 +51,6 @@ def build_route_from_env():
         os.environ["INPUT_DESTINATION"],
         os.environ["INPUT_DATE"],
         float(os.environ.get("INPUT_BUDGET", "999999")),
-        int(os.environ.get("INPUT_MAX_DURATION", "1440")),
     )
 
 
@@ -65,7 +62,7 @@ def write_result(text):
 def main():
     route = build_route_from_env()
     if route is None:
-        write_result("Could not parse the query. Use: /check ORIGIN DESTINATION DATE [BUDGET] [MAX_DURATION_MINUTES]")
+        write_result("Could not parse the query. Use: /check ORIGIN DESTINATION DATE [BUDGET]")
         return
 
     with STEALTH.use_sync(sync_playwright()) as p:
@@ -84,14 +81,11 @@ def main():
 
     matches = evaluate_matches(route, flights)
 
-    lines = [f"Query: {route['origin']} to {route['destination']} on {route['earliest_date']}"]
+    lines = [f"Query: {route['origin']} to {route['destination']} on {route['date']}"]
     prices = [f["price"] for f in flights if f["price"] is not None]
     if prices:
         lines.append(f"Lowest price found: {min(prices)} {route['currency']}")
-        lines.append(
-            f"{len(matches)} flight(s) matched budget {route['budget']} "
-            f"and max duration {route['max_duration_minutes']} min"
-        )
+        lines.append(f"{len(matches)} flight(s) matched budget {route['budget']}")
     else:
         lines.append("No flights found. Check the run's debug-snapshot artifact for a screenshot of what the page showed.")
 

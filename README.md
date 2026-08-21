@@ -21,16 +21,19 @@
 6. **手動查詢單一航班**：到 Actions 頁籤選 "Manual query" 手動輸入條件，或在任一個 issue 底下留言，例如：
 
    ```
-   /check TPE NRT 2026-09-15 6000 300
+   /check TPE NRT 2026-09-15 6000
    ```
 
-   格式是 `/check 出發地 目的地 日期 [預算] [最大飛行分鐘數]`，後兩個可省略。
+   格式是 `/check 出發地 目的地 日期 [預算]`，預算可省略。
+
+## 頁面解析方式
+
+Playwright 載入頁面後用 CSS selector 抓資料，selector 定義在 `scraper/scrape.py` 的 `CARD_SELECTOR` / `PRICE_SELECTOR` / `DURATION_SELECTOR` / `AIRLINE_SELECTOR`。trip.com 的票價卡片是非同步載入的（先出現 shimmer 骨架、資料到了才填進去），所以 `extract_flights()` 會先等第一筆價格出現，再多等一段時間讓已載入的卡片數量穩定下來才讀取，避免讀到還沒填值的卡片。這批 selector 是照實際 debug snapshot 核對過的，但 trip.com 改版就可能失效——如果發現抓不到航班，先看同一個 run 上傳的 debug-snapshot 附件（截圖 + HTML），對照目前的 selector 常數確認是不是哪個 `data-testid` 換了。
 
 ## 目前已知的限制
 
-- **trip.com 的選取器是起點，不是保證**：`scraper/scrape.py` 裡 `extract_flights()` 用的 CSS selector（`data-testid="flight-item"` 等）是根據一般 SPA 常見寫法先放上去的預估值，我沒辦法在這個環境裡實際渲染 trip.com 的頁面驗證，你第一次跑起來大概率需要打開瀏覽器開發者工具重新對照實際 DOM 調整。
-- **一次只查 `earliest_date`**：目前爬蟲只用追蹤設定裡最早的日期去查，還沒有把 `earliest_date` 到 `latest_date` 整段日期都掃過一輪，這是可以之後加的功能（迴圈呼叫 `build_search_url` 換不同日期即可）。
-- **服務條款與穩定性**：trip.com 的使用條款通常不允許自動化存取，站方也可能有速率限制或機器人偵測，爬蟲被擋掉、或改版後選取器失效都算預期內。如果你比較在意長期穩定性，可以考慮換成有官方 API 的資料源，例如 Kiwi.com 的 Tequila API 或 Amadeus Self-Service API，一樣能查即時票價又不用擔心站方隨時改版或封鎖。
+- **一條路線只查一個日期**：route 只有單一 `date` 欄位，沒有日期區間。想比較不同日期就開多張 issue，各自追蹤一個日期，不會互相干擾。
+- **服務條款與穩定性**：trip.com 的使用條款通常不允許自動化存取，站方也可能有速率限制或機器人偵測，爬蟲被擋掉都算預期內。如果你比較在意長期穩定性，可以考慮換成有官方 API 的資料源，例如 Kiwi.com 的 Tequila API 或 Amadeus Self-Service API，一樣能查即時票價又不用擔心站方隨時改版或封鎖。
 - **Actions 分鐘數額度**：免費方案的私有 repo 每月有 Actions 執行分鐘數上限，Playwright 安裝瀏覽器本身就要花一些時間，如果覺得太耗額度可以把 cron 間隔拉長（例如改成每小時一次）。
 - **幣別參數是盡力而為**：`curr` 這個查詢參數是照你填的 `currency` 直接帶入 trip.com 的網址，不同地區站台支援的幣別代碼可能不完全一樣，需要的話可以在 `TRIP_DOMAIN` / `TRIP_LOCALE` 環境變數調整成你所在地區對應的網域。
 
@@ -41,8 +44,8 @@
 `scraper/scrape.py` 設計成就算單一路線爬取失敗，也不會讓整個 workflow 顯示失敗（錯誤會被 catch 起來，`flights` 變空陣列後繼續跑下一條），所以「run 顯示綠色勾勾」不代表真的爬到資料。照下面順序排查：
 
 1. 先確認 `routes/` 資料夾底下真的有 `route-*.json` 檔案。如果沒有，代表 issue 沒有被成功解析成路線設定，去檢查 "Parse route issue" 這個 workflow 有沒有跑過、有沒有失敗（常見原因：開 issue 時沒有選用 "Track a new flight route" 範本，導致沒有自動帶上 `track-route` label，workflow 的 `if: contains(...)` 條件就不會成立）。
-2. 如果 `routes/*.json` 存在，打開 "Scheduled scrape" 這個 run，展開 "Run scraper" 這一步的 log。如果看到 `No active routes found`，代表讀到的路線裡沒有 `active: true` 的項目。如果看到 `Failed to scrape route-xxx: ...TimeoutError...`，代表是 trip.com 頁面沒有等到 `[data-testid='flight-item']` 這個選取器出現——這就是 README 一開始提到的，選取器只是預估值，需要你實際打開 trip.com 的搜尋結果頁、用瀏覽器開發者工具（右鍵 → 檢查）比對真正的元素，把 `scraper/scrape.py` 裡 `extract_flights()` 用到的 selector 換成實際對應的。
-3. 就算選取器抓不到東西，`save_results()` 還是會寫入 `data/{route-id}/latest.json`（`lowest_price` 會是 `null`）。所以如果連這個檔案都沒出現，通常表示第 1 點的情況——`routes/` 底下根本沒有作用中的路線，而不是選取器的問題。
+2. 如果 `routes/*.json` 存在，打開 "Scheduled scrape" 這個 run，展開 "Run scraper" 這一步的 log。如果看到 `No active routes found`，代表讀到的路線裡沒有 `active: true` 的項目。如果看到 `Failed to scrape route-xxx: ...`，通常是 selector 等不到（trip.com 改版）或 `route` 缺少某個必要欄位，訊息裡會附上原始的例外內容；同一個 run 上傳的 debug-snapshot 附件（截圖 + HTML）可以確認當下頁面實際長怎樣，拿去對照 `scrape.py` 裡的 `CARD_SELECTOR` / `PRICE_SELECTOR` / `DURATION_SELECTOR` / `AIRLINE_SELECTOR` 是不是還對得上。
+3. 就算沒解析出任何航班，`save_results()` 還是會寫入 `data/{route-id}/latest.json`（`lowest_price` 會是 `null`）。所以如果連這個檔案都沒出現，通常表示第 1 點的情況——`routes/` 底下根本沒有作用中的路線。
 4. Discord 沒收到通知，先確認前面幾點都正常（有抓到航班、且低於預算），再檢查 repo 的 Settings → Secrets and variables → Actions 裡有沒有 `DISCORD_WEBHOOK_URL`，以及 webhook 網址是不是還有效（Discord 頻道設定裡可以重新查看或重建）。
 
 **排程沒有每 30 分鐘準時執行一次**

@@ -16,10 +16,6 @@ on:
         description: Budget threshold
         required: false
         default: "999999"
-      max_duration_minutes:
-        description: Max flight duration in minutes
-        required: false
-        default: "1440"
   issue_comment:
     types: [created]
 
@@ -51,7 +47,6 @@ jobs:
           INPUT_DESTINATION: ${{ github.event.inputs.destination }}
           INPUT_DATE: ${{ github.event.inputs.date }}
           INPUT_BUDGET: ${{ github.event.inputs.budget }}
-          INPUT_MAX_DURATION: ${{ github.event.inputs.max_duration_minutes }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python manual_query.py
 
