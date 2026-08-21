@@ -3,6 +3,14 @@ import os
 import urllib.error
 import urllib.request
 
+# Discord sits behind Cloudflare, which blocks requests with no/suspicious
+# User-Agent (Cloudflare error 1010). urllib's default UA ("Python-urllib/3.x")
+# gets flagged, so send a normal browser-looking one instead.
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+)
+
 
 def send_notification(route, matches):
     channel = route.get("notify_channel", "discord")
@@ -27,7 +35,10 @@ def send_discord(route, matches):
     request = urllib.request.Request(
         webhook_url,
         data=payload,
-        headers={"Content-Type": "application/json"},
+        headers={
+            "Content-Type": "application/json",
+            "User-Agent": USER_AGENT,
+        },
     )
     try:
         urllib.request.urlopen(request)
@@ -50,7 +61,10 @@ def send_telegram(route, matches):
     request = urllib.request.Request(
         url,
         data=payload,
-        headers={"Content-Type": "application/json"},
+        headers={
+            "Content-Type": "application/json",
+            "User-Agent": USER_AGENT,
+        },
     )
     urllib.request.urlopen(request)
 
