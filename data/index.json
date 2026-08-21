@@ -1,41 +1,20 @@
 [
   {
-    "id": "route-3",
-    "issue_number": 3,
+    "id": "route-6",
+    "issue_number": 6,
     "origin": "TPE",
     "destination": "NRT",
     "trip_type": "round_trip",
     "earliest_date": "2026-09-01",
-    "latest_date": "2026-09-15",
-    "return_date": "2026-09-30",
+    "latest_date": "2026-09-02",
+    "return_date": "2026-09-12",
     "budget": 20000.0,
     "currency": "TWD",
     "max_duration_minutes": 300,
     "notify_channel": "discord",
     "active": true,
     "latest": {
-      "checked_at": 1787270194,
-      "lowest_price": null,
-      "flight_count": 0,
-      "match_count": 0
-    }
-  },
-  {
-    "id": "route-4",
-    "issue_number": 4,
-    "origin": "TPE",
-    "destination": "MXP",
-    "trip_type": "round_trip",
-    "earliest_date": "2027-04-01",
-    "latest_date": "2027-04-01",
-    "return_date": "2027-04-15",
-    "budget": 50000.0,
-    "currency": "TWD",
-    "max_duration_minutes": 600,
-    "notify_channel": "discord",
-    "active": true,
-    "latest": {
-      "checked_at": 1787270230,
+      "checked_at": 1787292118,
       "lowest_price": null,
       "flight_count": 0,
       "match_count": 0
