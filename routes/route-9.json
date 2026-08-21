@@ -1,0 +1,13 @@
+{
+  "id": "route-9",
+  "issue_number": 9,
+  "origin": "TPE",
+  "destination": "MXP",
+  "trip_type": "round_trip",
+  "date": "2026-09-07",
+  "return_date": "2026-09-20",
+  "budget": 40000.0,
+  "currency": "TWD",
+  "notify_channel": "discord",
+  "active": true
+}
