@@ -12,8 +12,8 @@
     "notify_channel": "discord",
     "active": true,
     "latest": {
-      "checked_at": 1787527827,
-      "lowest_price": 13417.0,
+      "checked_at": 1787529111,
+      "lowest_price": 11877.0,
       "flight_count": 8,
       "match_count": 8
     }
@@ -31,9 +31,9 @@
     "notify_channel": "discord",
     "active": true,
     "latest": {
-      "checked_at": 1787527835,
-      "lowest_price": 29749.0,
-      "flight_count": 8,
+      "checked_at": 1787529121,
+      "lowest_price": 29752.0,
+      "flight_count": 10,
       "match_count": 7
     }
   }
