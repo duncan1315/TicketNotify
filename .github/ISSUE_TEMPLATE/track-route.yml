@@ -79,10 +79,19 @@ body:
       required: true
 
   - type: input
-    id: max_duration
+    id: max_duration_hours
     attributes:
-      label: Max flight duration in minutes
-      description: Optional. Flights longer than this are ignored. Leave blank for no limit.
-      placeholder: "300"
+      label: Max flight duration — hours
+      description: Optional. Flights longer than this are ignored. Leave both hour and minute fields blank for no limit.
+      placeholder: "5"
+    validations:
+      required: false
+
+  - type: input
+    id: max_duration_minutes
+    attributes:
+      label: Max flight duration — minutes
+      description: "0-59. Combines with the hours field above, e.g. 5 hours + 30 minutes = 5h30m limit."
+      placeholder: "30"
     validations:
       required: false
