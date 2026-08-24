@@ -1,0 +1,80 @@
+[
+  {
+    "id": "route-7",
+    "issue_number": 7,
+    "origin": "TPE",
+    "destination": "NRT",
+    "trip_type": "round_trip",
+    "date": "2026-09-01",
+    "return_date": "2026-09-15",
+    "budget": 20000.0,
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "active": true,
+    "latest": {
+      "checked_at": 1787541181,
+      "lowest_price": 10162.0,
+      "flight_count": 8,
+      "match_count": 8
+    }
+  },
+  {
+    "id": "route-9",
+    "issue_number": 9,
+    "origin": "TPE",
+    "destination": "MXP",
+    "trip_type": "round_trip",
+    "date": "2026-09-07",
+    "return_date": "2026-09-20",
+    "budget": 40000.0,
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "active": true,
+    "latest": {
+      "checked_at": 1787541197,
+      "lowest_price": 28009.0,
+      "flight_count": 8,
+      "match_count": 7
+    }
+  },
+  {
+    "id": "route-10",
+    "issue_number": 10,
+    "origin": "TPE",
+    "destination": "NRT",
+    "trip_type": "round_trip",
+    "date": "2026-09-01",
+    "return_date": "2026-09-07",
+    "budget": 20000.0,
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "max_duration_minutes": 150.0,
+    "active": true,
+    "latest": {
+      "checked_at": 1787541212,
+      "lowest_price": 11136.0,
+      "flight_count": 8,
+      "match_count": 0
+    }
+  },
+  {
+    "id": "route-11",
+    "issue_number": 11,
+    "origin": "TPE",
+    "destination": "MXP",
+    "trip_type": "round_trip",
+    "date": "2026-11-21",
+    "return_date": "2026-11-29",
+    "budget": 40000.0,
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "max_duration_minutes": 1300.0,
+    "active": true,
+    "latest": {
+      "checked_at": 1787541226,
+      "lowest_price": 24334.0,
+      "flight_count": 8,
+      "match_count": 2
+    }
+  }
+]
