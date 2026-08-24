@@ -70,14 +70,17 @@ def send_telegram(route, matches):
 
 
 def build_message(route, matches):
+    issue_ref = f"#{route['issue_number']}" if route.get("issue_number") else route.get("id", "")
     lines = [
-        f"Price alert: {route['origin']} to {route['destination']}",
-        f"Budget: {route['budget']} {route['currency']}",
+        "———————————————",
+        f"## ✈️ {route['origin']} → {route['destination']}  ({issue_ref})",
+        f"**Budget:** {route['budget']} {route['currency']}",
         "",
     ]
     lines.extend(format_match(m) for m in matches)
+    lines.append("———————————————")
     return "\n".join(lines)
 
 
 def format_match(flight):
-    return f"{flight['airline']} - {flight['price']} ({flight['duration_minutes']} min)"
+    return f"• {flight['airline']} — {flight['price']} ({flight['duration_minutes']} min)"
