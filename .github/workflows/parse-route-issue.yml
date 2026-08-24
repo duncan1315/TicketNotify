@@ -21,6 +21,7 @@ jobs:
       - name: Parse issue body into route config
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: python scraper/parse_issue.py
 

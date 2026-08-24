@@ -69,15 +69,28 @@ def send_telegram(route, matches):
     urllib.request.urlopen(request)
 
 
+def build_title(route):
+    # Prefer the actual GitHub issue title (set by parse_issue.py from
+    # ISSUE_TITLE). Falls back to origin → destination for routes that don't
+    # have one, e.g. manual_query.py's /check command, which builds a route
+    # dict on the fly and has no associated issue.
+    name = route.get("issue_title") or f"{route['origin']} → {route['destination']}"
+
+    dates = route.get("date", "")
+    return_date = route.get("return_date")
+    if return_date:
+        dates = f"{dates} → {return_date}"
+
+    return f"💰{route['budget']} {route['currency']} | {name} | {dates}"
+
+
 def build_message(route, matches):
-    issue_ref = f"#{route['issue_number']}" if route.get("issue_number") else route.get("id", "")
     lines = [
         "———————————————",
-        f"## ✈️ {route['origin']} → {route['destination']}  ({issue_ref})",
-        f"**Budget:** {route['budget']} {route['currency']}",
+        f"## ✈️ {build_title(route)}",
         "",
     ]
-    lines.extend(format_match(m) for m in matches)
+    lines.extend(format_match(m, route["currency"]) for m in matches)
     lines.append("———————————————")
     return "\n".join(lines)
 
@@ -90,7 +103,18 @@ def format_time(value):
     return value.split(" ")[1][:5] if " " in value else value
 
 
-def format_match(flight):
+def format_duration(total_minutes):
+    if total_minutes is None:
+        return "? duration"
+    hours, minutes = divmod(int(total_minutes), 60)
+    if hours and minutes:
+        return f"{hours}h{minutes}m"
+    if hours:
+        return f"{hours}h"
+    return f"{minutes}m"
+
+
+def format_match(flight, currency):
     stops = flight.get("stops")
     if stops is None:
         stops_label = "stops unknown"
@@ -101,8 +125,9 @@ def format_match(flight):
 
     departure = format_time(flight.get("departure_time"))
     arrival = format_time(flight.get("arrival_time"))
+    duration = format_duration(flight.get("duration_minutes"))
 
     return (
-        f"• {flight['airline']} — {flight['price']} "
-        f"({departure} → {arrival}, {flight['duration_minutes']} min, {stops_label})"
+        f"• {flight['airline']} — {flight['price']} {currency} "
+        f"({departure} → {arrival}, {duration}, {stops_label})"
     )

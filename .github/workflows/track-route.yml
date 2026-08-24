@@ -1,0 +1,97 @@
+name: Track a new flight route
+description: Add a route for the price tracker to watch on trip.com
+title: "[route] "
+labels:
+  - track-route
+body:
+  - type: input
+    id: origin
+    attributes:
+      label: Origin airport code
+      description: IATA code, for example TPE
+      value: TPE
+    validations:
+      required: true
+
+  - type: input
+    id: destination
+    attributes:
+      label: Destination airport code
+      value: NRT
+    validations:
+      required: true
+
+  - type: dropdown
+    id: trip_type
+    attributes:
+      label: Trip type
+      options:
+        - One way
+        - Round trip
+      default: 0
+    validations:
+      required: true
+
+  - type: input
+    id: departure_date
+    attributes:
+      label: Departure date
+      description: Format YYYY-MM-DD
+      value: "2026-09-01"
+    validations:
+      required: true
+
+  - type: input
+    id: return_date
+    attributes:
+      label: Return date
+      description: Only needed for round trip. Format YYYY-MM-DD
+      placeholder: "2026-09-20"
+    validations:
+      required: false
+
+  - type: input
+    id: budget
+    attributes:
+      label: Budget threshold
+      description: Alert when a fare is at or below this amount
+      value: "6000"
+    validations:
+      required: true
+
+  - type: input
+    id: currency
+    attributes:
+      label: Currency code
+      value: TWD
+    validations:
+      required: true
+
+  - type: dropdown
+    id: notify_channel
+    attributes:
+      label: Notification channel
+      options:
+        - discord
+        - telegram
+      default: 0
+    validations:
+      required: true
+
+  - type: input
+    id: max_duration_hours
+    attributes:
+      label: Max flight duration — hours
+      description: Optional. Flights longer than this are ignored. Leave both hour and minute fields blank for no limit.
+      placeholder: "5"
+    validations:
+      required: false
+
+  - type: input
+    id: max_duration_minutes
+    attributes:
+      label: Max flight duration — minutes
+      description: "0-59. Combines with the hours field above, e.g. 5 hours + 30 minutes = 5h30m limit."
+      placeholder: "30"
+    validations:
+      required: false

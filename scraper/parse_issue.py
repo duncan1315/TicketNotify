@@ -12,7 +12,8 @@ FIELD_MAP = {
     "Budget threshold": "budget",
     "Currency code": "currency",
     "Notification channel": "notify_channel",
-    "Max flight duration in minutes": "max_duration",
+    "Max flight duration — hours": "max_duration_hours",
+    "Max flight duration — minutes": "max_duration_minutes_part",
 }
 
 REQUIRED_FIELDS = [
@@ -39,6 +40,24 @@ def parse_optional_float(value):
     return float(value)
 
 
+def combine_duration_minutes(hours_raw, minutes_raw):
+    """Combine the hours/minutes issue-form fields into total minutes.
+
+    Either sub-field can be left blank (treated as 0), but leaving both
+    blank means "no limit" (returns None), matching the old single-field
+    behavior. Minutes must be 0-59; anything higher belongs in the hours
+    field instead.
+    """
+    hours_raw = (hours_raw or "").strip()
+    minutes_raw = (minutes_raw or "").strip()
+    if not hours_raw and not minutes_raw:
+        return None
+
+    hours = float(hours_raw) if hours_raw else 0.0
+    minutes = float(minutes_raw) if minutes_raw else 0.0
+    return hours * 60 + minutes
+
+
 def parse_body(body):
     sections = re.split(r"^### (.+)$", body, flags=re.MULTILINE)
     data = {}
@@ -55,10 +74,11 @@ def parse_body(body):
     return data
 
 
-def build_route(issue_number, parsed):
+def build_route(issue_number, issue_title, parsed):
     return {
         "id": f"route-{issue_number}",
         "issue_number": int(issue_number),
+        "issue_title": issue_title.strip() if issue_title else None,
         "origin": parsed["origin"].upper(),
         "destination": parsed["destination"].upper(),
         "trip_type": normalize_trip_type(parsed["trip_type"]),
@@ -67,13 +87,16 @@ def build_route(issue_number, parsed):
         "budget": float(parsed["budget"]),
         "currency": parsed["currency"].upper(),
         "notify_channel": parsed["notify_channel"].lower(),
-        "max_duration_minutes": parse_optional_float(parsed.get("max_duration")),
+        "max_duration_minutes": combine_duration_minutes(
+            parsed.get("max_duration_hours"), parsed.get("max_duration_minutes_part")
+        ),
         "active": True,
     }
 
 
 def main():
     issue_number = os.environ["ISSUE_NUMBER"]
+    issue_title = os.environ.get("ISSUE_TITLE", "")
     body = os.environ["ISSUE_BODY"]
     parsed = parse_body(body)
 
@@ -90,15 +113,20 @@ def main():
         print("Return date is required for round trip routes")
         sys.exit(1)
 
-    max_duration_raw = parsed.get("max_duration", "").strip()
-    if max_duration_raw:
-        try:
-            float(max_duration_raw)
-        except ValueError:
-            print(f"Max flight duration must be a number, got: {max_duration_raw!r}")
-            sys.exit(1)
+    hours_raw = parsed.get("max_duration_hours", "").strip()
+    minutes_raw = parsed.get("max_duration_minutes_part", "").strip()
+    for field_name, value in (("hours", hours_raw), ("minutes", minutes_raw)):
+        if value:
+            try:
+                float(value)
+            except ValueError:
+                print(f"Max flight duration {field_name} must be a number, got: {value!r}")
+                sys.exit(1)
+    if minutes_raw and not (0 <= float(minutes_raw) <= 59):
+        print(f"Max flight duration minutes must be between 0 and 59, got: {minutes_raw!r}")
+        sys.exit(1)
 
-    route = build_route(issue_number, parsed)
+    route = build_route(issue_number, issue_title, parsed)
 
     os.makedirs("routes", exist_ok=True)
     out_path = f"routes/{route['id']}.json"
