@@ -1,25 +1,5 @@
 [
   {
-    "id": "route-10",
-    "issue_number": 10,
-    "origin": "TPE",
-    "destination": "NRT",
-    "trip_type": "round_trip",
-    "date": "2026-09-01",
-    "return_date": "2026-09-07",
-    "budget": 20000.0,
-    "currency": "TWD",
-    "notify_channel": "discord",
-    "max_duration_minutes": 150.0,
-    "active": true,
-    "latest": {
-      "checked_at": 1787558341,
-      "lowest_price": 12296.0,
-      "flight_count": 8,
-      "match_count": 0
-    }
-  },
-  {
     "id": "route-11",
     "issue_number": 11,
     "origin": "TPE",
