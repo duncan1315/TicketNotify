@@ -5,6 +5,9 @@ on:
     workflows: ["pages-build-deployment"]
     types: [completed]
 
+permissions:
+  contents: write
+
 jobs:
   scrape:
     if: github.event.workflow_run.conclusion == 'success'
