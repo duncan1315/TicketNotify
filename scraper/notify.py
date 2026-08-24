@@ -83,4 +83,11 @@ def build_message(route, matches):
 
 
 def format_match(flight):
-    return f"• {flight['airline']} — {flight['price']} ({flight['duration_minutes']} min)"
+    stops = flight.get("stops")
+    if stops is None:
+        stops_label = "stops unknown"
+    elif stops == 0:
+        stops_label = "direct"
+    else:
+        stops_label = f"{stops} stop{'s' if stops != 1 else ''}"
+    return f"• {flight['airline']} — {flight['price']} ({flight['duration_minutes']} min, {stops_label})"

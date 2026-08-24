@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import time
 from pathlib import Path
 
@@ -29,6 +30,15 @@ CARD_SELECTOR = "[data-testid^='u-flight-card-']"
 PRICE_SELECTOR = "[data-testid='u_price_info']"
 DURATION_SELECTOR = "[data-testid='flightInfoDuration']"
 AIRLINE_SELECTOR = "[data-testid='flights-name']"
+
+# No confirmed data-testid for stop count exists yet (couldn't verify against
+# a live desktop page — see build_search_url's stoptype comment). Falls back
+# to scanning the card's visible text for common English stop-count phrasing
+# instead of a dedicated selector. Returns None rather than guessing when no
+# match is found, so "unknown" is never silently recorded as "0 stops".
+STOPS_TEXT_PATTERN = re.compile(
+    r"\b(nonstop|direct)\b|\b(\d+)\s+stops?\b", re.IGNORECASE
+)
 
 
 def new_context(browser):
@@ -69,6 +79,18 @@ def build_search_url(route):
         params += "&triptype=ow"
 
     params += f"&class=y&quantity=1&locale={TRIP_LOCALE}&curr={route['currency']}"
+
+    # Direct-flights-only filter. Confirmed via manual testing on trip.com's
+    # mobile site (tw.trip.com/m/flights/flightfirst/, using dcitycode/acitycode
+    # params) that clicking "Direct" adds stoptype=0 to the URL. NOT yet
+    # confirmed that the desktop showfarefirst endpoint (dcity/acity params,
+    # used here) accepts the same stoptype param name/value — the two pages
+    # may use different backend routes. If flight results still include
+    # connecting flights after this change, check a debug snapshot
+    # (scraper/debug/<route-id>.html) to see whether stoptype was honored,
+    # and adjust the param name/value below accordingly.
+    params += "&stoptype=0"
+
     return f"{TRIP_DOMAIN}/flights/showfarefirst{params}"
 
 
@@ -112,6 +134,7 @@ def extract_flights(page):
             "price": parse_price(price_el.inner_text()),
             "duration_minutes": parse_duration(duration_el.inner_text()),
             "airline": airline_el.inner_text() if airline_el else "unknown",
+            "stops": parse_stops(card.inner_text()),
         })
     return flights
 
@@ -130,6 +153,15 @@ def parse_duration(text):
     if "m" in text:
         minutes = int(text.replace("m", "").strip())
     return hours * 60 + minutes
+
+
+def parse_stops(card_text):
+    match = STOPS_TEXT_PATTERN.search(card_text)
+    if not match:
+        return None
+    if match.group(1):  # "nonstop" or "direct"
+        return 0
+    return int(match.group(2))  # "N stops"
 
 
 def scrape_route(context, route):
