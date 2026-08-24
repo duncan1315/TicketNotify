@@ -70,24 +70,27 @@ def send_telegram(route, matches):
 
 
 def build_title(route):
-    # Prefer the actual GitHub issue title (set by parse_issue.py from
-    # ISSUE_TITLE). Falls back to origin → destination for routes that don't
-    # have one, e.g. manual_query.py's /check command, which builds a route
-    # dict on the fly and has no associated issue.
+    # Falls back to origin → destination when there's no origin/destination
+    # concept to add on top of — currently always present, but kept as a
+    # guard since manual_query.py builds routes without issue_title.
     name = route.get("issue_title") or f"{route['origin']} → {route['destination']}"
+    return f"✈️ {name}"
 
+
+def build_subtitle(route):
     dates = route.get("date", "")
     return_date = route.get("return_date")
     if return_date:
         dates = f"{dates} → {return_date}"
 
-    return f"💰{route['budget']} {route['currency']} | {name} | {dates}"
+    return f"💰{route['budget']} {route['currency']} | {dates}"
 
 
 def build_message(route, matches):
     lines = [
         "———————————————",
-        f"## ✈️ {build_title(route)}",
+        build_title(route),
+        build_subtitle(route),
         "",
     ]
     lines.extend(format_match(m, route["currency"]) for m in matches)
@@ -128,6 +131,6 @@ def format_match(flight, currency):
     duration = format_duration(flight.get("duration_minutes"))
 
     return (
-        f"• {flight['airline']} — {flight['price']} {currency} "
-        f"({departure} → {arrival}, {duration}, {stops_label})"
+        f"• {flight['airline']} — {flight['price']} {currency}\n"
+        f"  ({departure} → {arrival}, {duration}, {stops_label})"
     )
