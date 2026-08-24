@@ -57,8 +57,11 @@ function renderRouteCard(route) {
     detailRow("Trip type", isRoundTrip ? "Round trip" : "One way"),
     detailRow("Dates", dateRange),
     detailRow("Budget", `${route.budget} ${route.currency}`),
-    detailRow("Last checked", formatTimestamp(latest.checked_at)),
   );
+  if (route.max_duration_minutes != null) {
+    details.appendChild(detailRow("Max duration", `${route.max_duration_minutes} min`));
+  }
+  details.appendChild(detailRow("Last checked", formatTimestamp(latest.checked_at)));
 
   card.append(header, details);
 

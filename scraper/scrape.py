@@ -179,12 +179,16 @@ def scrape_route(context, route):
 
 
 def evaluate_matches(route, flights):
+    max_duration = route.get("max_duration_minutes")
     matches = []
     for flight in flights:
         if flight["price"] is None:
             continue
-        if flight["price"] <= route["budget"]:
-            matches.append(flight)
+        if flight["price"] > route["budget"]:
+            continue
+        if max_duration is not None and flight["duration_minutes"] > max_duration:
+            continue
+        matches.append(flight)
     return matches
 
 

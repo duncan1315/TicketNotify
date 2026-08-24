@@ -12,6 +12,7 @@ FIELD_MAP = {
     "Budget threshold": "budget",
     "Currency code": "currency",
     "Notification channel": "notify_channel",
+    "Max flight duration in minutes": "max_duration",
 }
 
 REQUIRED_FIELDS = [
@@ -29,12 +30,25 @@ def normalize_trip_type(value):
     return value.strip().lower().replace(" ", "_")
 
 
+def parse_optional_float(value):
+    if value is None:
+        return None
+    value = value.strip()
+    if not value:
+        return None
+    return float(value)
+
+
 def parse_body(body):
     sections = re.split(r"^### (.+)$", body, flags=re.MULTILINE)
     data = {}
     for i in range(1, len(sections), 2):
         label = sections[i].strip()
         value = sections[i + 1].strip()
+        if value == "_No response_":
+            # GitHub Issue Forms renders this literal placeholder for optional
+            # fields the user left blank, instead of omitting the section.
+            value = ""
         key = FIELD_MAP.get(label)
         if key:
             data[key] = value
@@ -53,6 +67,7 @@ def build_route(issue_number, parsed):
         "budget": float(parsed["budget"]),
         "currency": parsed["currency"].upper(),
         "notify_channel": parsed["notify_channel"].lower(),
+        "max_duration_minutes": parse_optional_float(parsed.get("max_duration")),
         "active": True,
     }
 
@@ -74,6 +89,14 @@ def main():
     if trip_type == "round_trip" and not parsed.get("return_date", "").strip():
         print("Return date is required for round trip routes")
         sys.exit(1)
+
+    max_duration_raw = parsed.get("max_duration", "").strip()
+    if max_duration_raw:
+        try:
+            float(max_duration_raw)
+        except ValueError:
+            print(f"Max flight duration must be a number, got: {max_duration_raw!r}")
+            sys.exit(1)
 
     route = build_route(issue_number, parsed)
 
