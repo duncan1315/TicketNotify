@@ -1,0 +1,12 @@
+name: Scrape after Pages deploy
+
+on:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+
+jobs:
+  scrape:
+    if: github.event.workflow_run.conclusion == 'success'
+    uses: ./.github/workflows/run-scrape.yml
+    secrets: inherit

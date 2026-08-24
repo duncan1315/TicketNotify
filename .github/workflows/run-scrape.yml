@@ -1,0 +1,45 @@
+name: Run scrape and commit
+
+on:
+  workflow_call: {}
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r scraper/requirements.txt
+          playwright install chromium --with-deps
+
+      - name: Run scraper
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python scraper/scrape.py
+
+      - name: Upload debug snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scrape-debug-${{ github.run_id }}
+          path: scraper/debug
+          if-no-files-found: ignore
+          retention-days: 3
+
+      - name: Commit updated data
+        run: |
+          git config user.name "route-bot"
+          git config user.email "route-bot@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "Update flight price data [skip ci]"
+          git push
