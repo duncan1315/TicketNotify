@@ -1,11 +1,11 @@
-name: Parse route issue
+name: Delete route on issue close
 
 on:
   issues:
-    types: [opened, edited, reopened]
+    types: [closed]
 
 jobs:
-  parse:
+  delete:
     if: contains(github.event.issue.labels.*.name, 'track-route')
     runs-on: ubuntu-latest
     permissions:
@@ -18,18 +18,17 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Parse issue body into route config
+      - name: Delete route data
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-          ISSUE_BODY: ${{ github.event.issue.body }}
-        run: python scraper/parse_issue.py
+        run: python scraper/delete_route.py
 
-      - name: Commit route config
+      - name: Commit deletion
         run: |
           git config user.name "route-bot"
           git config user.email "route-bot@users.noreply.github.com"
-          git add routes/
-          git diff --cached --quiet || git commit -m "Add or update route from issue #${{ github.event.issue.number }}"
+          git add routes/ data/
+          git diff --cached --quiet || git commit -m "Remove route from closed issue #${{ github.event.issue.number }}"
           git push
 
       - name: Comment on issue
@@ -40,5 +39,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: "Route saved. It will run on the next scheduled check, or comment `/check ORIGIN DESTINATION DATE` here to run it now.",
+              body: "Route and its tracked data have been removed. Reopen and edit this issue to start tracking it again.",
             });
