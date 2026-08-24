@@ -31,6 +31,18 @@ PRICE_SELECTOR = "[data-testid='u_price_info']"
 DURATION_SELECTOR = "[data-testid='flightInfoDuration']"
 AIRLINE_SELECTOR = "[data-testid='flights-name']"
 
+# Departure/arrival each have their own data-testid (flight-time-<datetime>),
+# but the datetime is embedded in the attribute name itself rather than being
+# a fixed value, so we can't select on it directly. The wrapper class is what
+# reliably distinguishes the two, confirmed against a saved results page: a
+# leg's departure time sits inside .is-departure-meridiem and its arrival
+# time inside .is-arrival-meridiem. One-way only for now — a round-trip card
+# here shows just the outbound leg (return-leg selection happens on a second
+# page this scraper doesn't visit yet), so these selectors are not used to
+# populate return-flight times.
+DEPARTURE_TIME_SELECTOR = "[class*='is-departure-meridiem'] [data-testid^='flight-time-']"
+ARRIVAL_TIME_SELECTOR = "[class*='is-arrival-meridiem'] [data-testid^='flight-time-']"
+
 # No confirmed data-testid for stop count exists yet (couldn't verify against
 # a live desktop page — see build_search_url's stoptype comment). Falls back
 # to scanning the card's visible text for common English stop-count phrasing
@@ -126,6 +138,8 @@ def extract_flights(page):
         price_el = card.query_selector(PRICE_SELECTOR)
         duration_el = card.query_selector(DURATION_SELECTOR)
         airline_el = card.query_selector(AIRLINE_SELECTOR)
+        departure_el = card.query_selector(DEPARTURE_TIME_SELECTOR)
+        arrival_el = card.query_selector(ARRIVAL_TIME_SELECTOR)
 
         if not price_el or not duration_el:
             continue
@@ -135,6 +149,8 @@ def extract_flights(page):
             "duration_minutes": parse_duration(duration_el.inner_text()),
             "airline": airline_el.inner_text() if airline_el else "unknown",
             "stops": parse_stops(card.inner_text()),
+            "departure_time": parse_time_testid(departure_el) if departure_el else None,
+            "arrival_time": parse_time_testid(arrival_el) if arrival_el else None,
         })
     return flights
 
@@ -153,6 +169,11 @@ def parse_duration(text):
     if "m" in text:
         minutes = int(text.replace("m", "").strip())
     return hours * 60 + minutes
+
+
+def parse_time_testid(el):
+    testid = el.get_attribute("data-testid") or ""
+    return testid.removeprefix("flight-time-") or None
 
 
 def parse_stops(card_text):

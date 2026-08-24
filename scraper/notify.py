@@ -82,6 +82,14 @@ def build_message(route, matches):
     return "\n".join(lines)
 
 
+def format_time(value):
+    if not value:
+        return "?"
+    # value looks like "2026-09-02 06:45:00"; only HH:MM is useful here since
+    # the route's date is already shown in the message header.
+    return value.split(" ")[1][:5] if " " in value else value
+
+
 def format_match(flight):
     stops = flight.get("stops")
     if stops is None:
@@ -90,4 +98,11 @@ def format_match(flight):
         stops_label = "direct"
     else:
         stops_label = f"{stops} stop{'s' if stops != 1 else ''}"
-    return f"• {flight['airline']} — {flight['price']} ({flight['duration_minutes']} min, {stops_label})"
+
+    departure = format_time(flight.get("departure_time"))
+    arrival = format_time(flight.get("arrival_time"))
+
+    return (
+        f"• {flight['airline']} — {flight['price']} "
+        f"({departure} → {arrival}, {flight['duration_minutes']} min, {stops_label})"
+    )
