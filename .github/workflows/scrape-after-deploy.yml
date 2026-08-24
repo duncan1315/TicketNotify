@@ -10,6 +10,11 @@ permissions:
 
 jobs:
   scrape:
-    if: github.event.workflow_run.conclusion == 'success'
+    # 只在以下条件下执行：
+    # 1. pages-build-deployment 成功
+    # 2. 触发的 commit 不是 scraper 自己生成的
+    if: |
+      github.event.workflow_run.conclusion == 'success' && 
+      !contains(github.event.workflow_run.head_commit.message, '[skip pages]')
     uses: ./.github/workflows/run-scrape.yml
     secrets: inherit
