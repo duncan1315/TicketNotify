@@ -2,7 +2,7 @@ name: Scrape after Pages deploy
 
 on:
   workflow_run:
-    workflows: ["pages build and deployment"]
+    workflows: ["pages-build-deployment"]
     types: [completed]
 
 jobs:
