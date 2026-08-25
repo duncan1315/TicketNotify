@@ -1,5 +1,26 @@
 [
   {
+    "id": "route-17",
+    "issue_number": 17,
+    "issue_title": "[route] JP-202608",
+    "origin": "TPE",
+    "destination": "NRT",
+    "trip_type": "round_trip",
+    "date": "2026-08-29",
+    "return_date": "2026-08-31",
+    "budget": 9500.0,
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "max_duration_minutes": 240.0,
+    "active": true,
+    "latest": {
+      "checked_at": 1787644879,
+      "lowest_price": 9898.0,
+      "flight_count": 8,
+      "match_count": 0
+    }
+  },
+  {
     "id": "route-15",
     "issue_number": 15,
     "issue_title": "[route] Italy",
@@ -14,7 +35,7 @@
     "max_duration_minutes": 1200.0,
     "active": true,
     "latest": {
-      "checked_at": 1787644678,
+      "checked_at": 1787644890,
       "lowest_price": 33392.0,
       "flight_count": 8,
       "match_count": 0
@@ -35,8 +56,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1787644693,
-      "lowest_price": 12217.0,
+      "checked_at": 1787644903,
+      "lowest_price": 14047.0,
       "flight_count": 8,
       "match_count": 0
     }
