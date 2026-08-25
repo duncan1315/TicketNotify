@@ -1,0 +1,15 @@
+{
+  "id": "route-17",
+  "issue_number": 17,
+  "issue_title": "[route] JP-202608",
+  "origin": "TPE",
+  "destination": "NRT",
+  "trip_type": "round_trip",
+  "date": "2026-08-29",
+  "return_date": "2026-08-31",
+  "budget": 9500.0,
+  "currency": "TWD",
+  "notify_channel": "discord",
+  "max_duration_minutes": 240.0,
+  "active": true
+}
