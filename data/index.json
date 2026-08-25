@@ -38,25 +38,5 @@
       "flight_count": 8,
       "match_count": 3
     }
-  },
-  {
-    "id": "route-11",
-    "issue_number": 11,
-    "origin": "TPE",
-    "destination": "MXP",
-    "trip_type": "round_trip",
-    "date": "2026-11-21",
-    "return_date": "2026-11-29",
-    "budget": 40000.0,
-    "currency": "TWD",
-    "notify_channel": "discord",
-    "max_duration_minutes": 1300.0,
-    "active": true,
-    "latest": {
-      "checked_at": 1787634534,
-      "lowest_price": 24318.0,
-      "flight_count": 8,
-      "match_count": 7
-    }
   }
 ]
