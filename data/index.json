@@ -18,25 +18,5 @@
       "flight_count": 8,
       "match_count": 0
     }
-  },
-  {
-    "id": "route-12",
-    "issue_number": 12,
-    "origin": "TPE",
-    "destination": "NRT",
-    "trip_type": "round_trip",
-    "date": "2027-02-18",
-    "return_date": "2027-02-22",
-    "budget": 12000.0,
-    "currency": "TWD",
-    "notify_channel": "discord",
-    "max_duration_minutes": 240.0,
-    "active": true,
-    "latest": {
-      "checked_at": 1787634518,
-      "lowest_price": 9817.0,
-      "flight_count": 8,
-      "match_count": 3
-    }
   }
 ]
