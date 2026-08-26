@@ -14,6 +14,16 @@ function formatTimestamp(seconds) {
   return new Date(seconds * 1000).toLocaleString();
 }
 
+function formatStops(stops) {
+  if (stops == null) {
+    return "Stops unknown";
+  }
+  if (stops === 0) {
+    return "Direct";
+  }
+  return `${stops} stop${stops === 1 ? "" : "s"}`;
+}
+
 function renderFlapPrice(text) {
   const wrap = document.createElement("div");
   wrap.className = "flap-price";
@@ -74,6 +84,10 @@ function renderRouteCard(route) {
 
   if (hasPrice) {
     card.appendChild(renderFlapPrice(`${latest.lowest_price} ${route.currency}`));
+    const stopsNote = document.createElement("p");
+    stopsNote.className = "price-note";
+    stopsNote.textContent = formatStops(latest.lowest_price_stops);
+    card.appendChild(stopsNote);
   } else {
     const notChecked = document.createElement("p");
     notChecked.textContent = "Not checked yet";

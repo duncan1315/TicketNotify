@@ -7,6 +7,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 
+from ai_stops import infer_stops
 from notify import send_notification
 
 ROUTES_DIR = Path("routes")
@@ -134,6 +135,7 @@ def extract_flights(page):
     cards = page.query_selector_all(CARD_SELECTOR)
 
     flights = []
+    card_texts = []
     for card in cards:
         price_el = card.query_selector(PRICE_SELECTOR)
         duration_el = card.query_selector(DURATION_SELECTOR)
@@ -144,14 +146,36 @@ def extract_flights(page):
         if not price_el or not duration_el:
             continue
 
+        card_text = card.inner_text()
         flights.append({
             "price": parse_price(price_el.inner_text()),
             "duration_minutes": parse_duration(duration_el.inner_text()),
             "airline": airline_el.inner_text() if airline_el else "unknown",
-            "stops": parse_stops(card.inner_text()),
+            "stops": parse_stops(card_text),
             "departure_time": parse_time_testid(departure_el) if departure_el else None,
             "arrival_time": parse_time_testid(arrival_el) if arrival_el else None,
         })
+        card_texts.append(card_text)
+
+    return fill_unknown_stops(flights, card_texts)
+
+
+def fill_unknown_stops(flights, card_texts):
+    # Only cards the regex above couldn't read go to the AI fallback, and
+    # infer_stops only ever sees that subset - not their position in the
+    # full flights list - so its result dict is keyed by position within
+    # `unresolved`, not by index into `flights`; position/flight_index
+    # below map one back to the other.
+    unresolved = [i for i, flight in enumerate(flights) if flight["stops"] is None]
+    if not unresolved:
+        return flights
+
+    ai_results = infer_stops([card_texts[i] for i in unresolved])
+    for position, flight_index in enumerate(unresolved):
+        stops = ai_results.get(position)
+        if stops is not None:
+            flights[flight_index]["stops"] = stops
+
     return flights
 
 
@@ -217,10 +241,13 @@ def save_results(route, flights, matches):
     route_dir = DATA_DIR / route["id"]
     route_dir.mkdir(parents=True, exist_ok=True)
 
-    prices = [f["price"] for f in flights if f["price"] is not None]
+    priced_flights = [f for f in flights if f["price"] is not None]
+    cheapest = min(priced_flights, key=lambda f: f["price"]) if priced_flights else None
+
     latest = {
         "checked_at": int(time.time()),
-        "lowest_price": min(prices) if prices else None,
+        "lowest_price": cheapest["price"] if cheapest else None,
+        "lowest_price_stops": cheapest["stops"] if cheapest else None,
         "flight_count": len(flights),
         "match_count": len(matches),
     }

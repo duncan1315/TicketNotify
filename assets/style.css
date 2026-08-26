@@ -222,6 +222,12 @@ main {
   text-align: center;
 }
 
+.price-note {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+
 .page-footer {
   max-width: 880px;
   margin: 0 auto;
