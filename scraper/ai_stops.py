@@ -78,6 +78,9 @@ def _parse_response(response_text):
     return {item["index"]: item["stops"] for item in json.loads(response_text)}
 
 
+_missing_key_warned = False
+
+
 def infer_stops(card_texts):
     """Ask Gemini how many stops each flight has.
 
@@ -86,10 +89,16 @@ def infer_stops(card_texts):
     callers passing a filtered subset are responsible for mapping the
     result back to their own indices.
     """
-    global _model_index
+    global _model_index, _missing_key_warned
+
+    if not card_texts:
+        return {}
 
     client = _get_client()
-    if client is None or not card_texts:
+    if client is None:
+        if not _missing_key_warned:
+            print("GEMINI_API_KEY is not set — flights the regex can't classify will stay as unknown stops")
+            _missing_key_warned = True
         return {}
 
     prompt = _build_prompt(card_texts)
