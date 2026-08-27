@@ -11,6 +11,16 @@ on:
 permissions:
   contents: write
 
+# Shares a group with scrape-after-deploy.yml: both call run-scrape.yml,
+# whose last step is `git push` to the same branch with no retry. Without
+# this, running at the same time causes one push to fail as a non-fast-
+# forward rejection (the other job's data/ commit already landed first).
+# cancel-in-progress: false so a queued run waits its turn instead of
+# killing a scrape that's already mid-flight.
+concurrency:
+  group: run-scrape
+  cancel-in-progress: false
+
 jobs:
   scrape:
     uses: ./.github/workflows/run-scrape.yml

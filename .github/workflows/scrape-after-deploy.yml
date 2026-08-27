@@ -8,6 +8,12 @@ on:
 permissions:
   contents: write
 
+# Same group as scrape-scheduled.yml — see that file for why. Group name
+# must match exactly, or the two won't be recognized as sharing a queue.
+concurrency:
+  group: run-scrape
+  cancel-in-progress: false
+
 jobs:
   scrape:
     # 只在以下条件下执行：
