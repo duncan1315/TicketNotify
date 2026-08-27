@@ -282,6 +282,8 @@ def main():
             latest = save_results(route, flights, matches)
             summaries.append({**route, "latest": latest})
 
+            print(f"{route['id']}: {len(flights)} flight(s) seen, {len(matches)} match(es), lowest price {latest['lowest_price']}")
+
             if matches:
                 send_notification(route, matches)
         context.close()

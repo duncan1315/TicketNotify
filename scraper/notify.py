@@ -42,10 +42,14 @@ def send_discord(route, matches):
     )
     try:
         urllib.request.urlopen(request)
+        print(f"Discord notification sent for {route.get('id', route.get('origin'))} ({len(matches)} match(es))")
     except urllib.error.HTTPError as exc:
         body = exc.read().decode(errors="replace")
         print(f"Discord webhook failed: HTTP {exc.code} {exc.reason}")
         print(f"Response body: {body}")
+        raise
+    except urllib.error.URLError as exc:
+        print(f"Discord webhook failed: connection error: {exc.reason}")
         raise
 
 

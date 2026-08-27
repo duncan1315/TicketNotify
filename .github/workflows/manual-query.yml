@@ -49,7 +49,7 @@ jobs:
           INPUT_BUDGET: ${{ github.event.inputs.budget }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python manual_query.py
+        run: python -u manual_query.py
 
       - name: Upload debug snapshot
         if: always()
