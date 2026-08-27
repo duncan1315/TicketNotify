@@ -39,7 +39,11 @@ function renderFlapPrice(text) {
 function renderRouteCard(route) {
   const latest = route.latest || {};
   const hasPrice = latest.lowest_price != null;
-  const underBudget = hasPrice && latest.lowest_price <= route.budget;
+  const withinBudget = hasPrice && latest.lowest_price <= route.budget;
+  const withinDuration = route.max_duration_minutes == null
+    || latest.lowest_price_duration_minutes == null
+    || latest.lowest_price_duration_minutes <= route.max_duration_minutes;
+  const underBudget = withinBudget && withinDuration;
 
   const card = document.createElement("article");
   card.className = `route-card ${underBudget ? "status-under" : ""}`;
@@ -88,6 +92,13 @@ function renderRouteCard(route) {
     stopsNote.className = "price-note";
     stopsNote.textContent = formatStops(latest.lowest_price_stops);
     card.appendChild(stopsNote);
+
+    if (withinBudget && !withinDuration) {
+      const durationNote = document.createElement("p");
+      durationNote.className = "price-note";
+      durationNote.textContent = `Under budget, but ${latest.lowest_price_duration_minutes} min exceeds the ${route.max_duration_minutes} min limit`;
+      card.appendChild(durationNote);
+    }
   } else {
     const notChecked = document.createElement("p");
     notChecked.textContent = "Not checked yet";

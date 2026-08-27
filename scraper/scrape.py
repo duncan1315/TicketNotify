@@ -248,6 +248,7 @@ def save_results(route, flights, matches):
         "checked_at": int(time.time()),
         "lowest_price": cheapest["price"] if cheapest else None,
         "lowest_price_stops": cheapest["stops"] if cheapest else None,
+        "lowest_price_duration_minutes": cheapest["duration_minutes"] if cheapest else None,
         "flight_count": len(flights),
         "match_count": len(matches),
     }
