@@ -133,8 +133,9 @@ def format_match(flight, currency):
     departure = format_time(flight.get("departure_time"))
     arrival = format_time(flight.get("arrival_time"))
     duration = format_duration(flight.get("duration_minutes"))
+    new_low_marker = " 🔻 New low!" if flight.get("is_new_low") else ""
 
     return (
-        f"• {flight['airline']} — {flight['price']} {currency}\n"
+        f"• {flight['airline']} — {flight['price']} {currency}{new_low_marker}\n"
         f"  ({departure} → {arrival}, {duration}, {stops_label})"
     )

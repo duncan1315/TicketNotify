@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Route history — Flight price tracker</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-inner">
+    <a href="index.html" class="back-link">&larr; All routes</a>
+    <p class="eyebrow" id="route-eyebrow">Departures watch</p>
+    <h1 id="route-title">Route history</h1>
+    <p class="subtitle" id="route-subtitle"></p>
+  </div>
+</header>
+
+<main>
+  <section id="route-detail" aria-live="polite">
+    <p class="empty-state" id="detail-empty-state">Loading route&hellip;</p>
+  </section>
+</main>
+
+<footer class="page-footer">
+  <p>Runs on a schedule via GitHub Actions. Alerts are sent to Discord or Telegram when a fare drops below budget.</p>
+</footer>
+
+<script src="assets/route.js"></script>
+</body>
+</html>

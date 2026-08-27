@@ -237,6 +237,42 @@ def evaluate_matches(route, flights):
     return matches
 
 
+def read_historical_lowest_price(route_id):
+    # Called BEFORE save_results() appends this run's entry to
+    # history.jsonl — otherwise this run's own price would already be in
+    # "history" by the time we compare against it, and a genuinely new low
+    # would never register as new (it would just be tied with itself).
+    history_path = DATA_DIR / route_id / "history.jsonl"
+    if not history_path.exists():
+        return None
+
+    lowest = None
+    with open(history_path) as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            entry = json.loads(line)
+            price = entry.get("lowest_price")
+            if price is None:
+                continue
+            if lowest is None or price < lowest:
+                lowest = price
+    return lowest
+
+
+def mark_new_lows(matches, historical_lowest_price):
+    # historical_lowest_price is None when history.jsonl doesn't exist yet
+    # (first-ever run for this route) or every past entry had a null price
+    # (every past scrape failed to find any flight). Either way there's no
+    # prior price to beat, so nothing can be flagged "new low" — a first
+    # sighting isn't a record broken, it's just the first data point.
+    if historical_lowest_price is None:
+        return
+    for flight in matches:
+        flight["is_new_low"] = flight["price"] < historical_lowest_price
+
+
 def save_results(route, flights, matches):
     route_dir = DATA_DIR / route["id"]
     route_dir.mkdir(parents=True, exist_ok=True)
@@ -280,6 +316,10 @@ def main():
         for route in routes:
             flights = scrape_route(context, route)
             matches = evaluate_matches(route, flights)
+
+            historical_lowest_price = read_historical_lowest_price(route["id"])
+            mark_new_lows(matches, historical_lowest_price)
+
             latest = save_results(route, flights, matches)
             summaries.append({**route, "latest": latest})
 

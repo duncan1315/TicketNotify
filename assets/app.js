@@ -45,8 +45,9 @@ function renderRouteCard(route) {
     || latest.lowest_price_duration_minutes <= route.max_duration_minutes;
   const underBudget = withinBudget && withinDuration;
 
-  const card = document.createElement("article");
+  const card = document.createElement("a");
   card.className = `route-card ${underBudget ? "status-under" : ""}`;
+  card.href = `route.html?id=${encodeURIComponent(route.id)}`;
 
   const header = document.createElement("div");
   header.className = "route-card-header";
