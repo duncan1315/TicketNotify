@@ -1,8 +1,11 @@
 name: Scheduled scrape
 
+# Triggered externally by a cron-job.org job hitting this workflow's
+# dispatch endpoint on a schedule, instead of GitHub's own `schedule:`
+# trigger (which was firing up to ~30 minutes late during Actions traffic
+# spikes). workflow_dispatch is kept so this can still be run manually
+# from the Actions tab.
 on:
-  schedule:
-    - cron: "7,37 * * * *"
   workflow_dispatch: {}
 
 permissions:
