@@ -9,6 +9,12 @@ from playwright_stealth import Stealth
 
 from ai_stops import infer_stops
 from notify import send_notification
+from track_flight import (
+    load_active_tracked_flights,
+    find_tracked_flight,
+    save_tracked_result,
+    read_historical_lowest_price as read_tracked_historical_lowest_price,
+)
 
 ROUTES_DIR = Path("routes")
 DATA_DIR = Path("data")
@@ -303,10 +309,59 @@ def build_index(route_summaries):
         json.dump(route_summaries, f, indent=2)
 
 
+def build_tracked_index(tracked_summaries):
+    with open(DATA_DIR / "tracked-index.json", "w") as f:
+        json.dump(tracked_summaries, f, indent=2)
+
+
+def scrape_tracked_flight(context, tracked):
+    # Reuses scrape_route()'s page-load-and-extract logic by handing it a
+    # route-shaped dict, rather than duplicating that logic here. A
+    # tracked flight has no return date, budget, or duration limit of its
+    # own — those are route-level filtering concepts that don't apply to
+    # "find this one specific flight" — so this always searches one-way.
+    pseudo_route = {
+        "id": tracked["id"],
+        "origin": tracked["origin"],
+        "destination": tracked["destination"],
+        "date": tracked["date"],
+        "trip_type": "one_way",
+        "currency": tracked["currency"],
+    }
+    return scrape_route(context, pseudo_route)
+
+
+def check_tracked_flight(context, tracked):
+    flights = scrape_tracked_flight(context, tracked)
+    found_flight = find_tracked_flight(flights, tracked)
+
+    historical_lowest_price = read_tracked_historical_lowest_price(tracked["id"])
+    is_new_low = (
+        found_flight is not None
+        and historical_lowest_price is not None
+        and found_flight["price"] < historical_lowest_price
+    )
+
+    entry = save_tracked_result(tracked["id"], found_flight)
+
+    if found_flight is None:
+        print(f"{tracked['id']}: not found in this check's search results")
+    else:
+        print(f"{tracked['id']}: found, price {entry['price']}" + (" (NEW LOW)" if is_new_low else ""))
+
+    if found_flight is not None:
+        found_flight = {**found_flight, "is_new_low": is_new_low}
+        notify_target = {**tracked, "budget": "Tracking"}
+        send_notification(notify_target, [found_flight])
+
+    return {**tracked, "latest": entry}
+
+
 def main():
     routes = load_active_routes()
-    if not routes:
-        print("No active routes found")
+    tracked_flights = load_active_tracked_flights()
+    if not routes and not tracked_flights:
+        print("No active routes or tracked flights found")
         return
 
     summaries = []
@@ -327,10 +382,16 @@ def main():
 
             if matches:
                 send_notification(route, matches)
+
+        tracked_summaries = []
+        for tracked in tracked_flights:
+            tracked_summaries.append(check_tracked_flight(context, tracked))
+
         context.close()
         browser.close()
 
     build_index(summaries)
+    build_tracked_index(tracked_summaries)
 
 
 if __name__ == "__main__":

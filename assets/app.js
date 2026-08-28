@@ -3,6 +3,8 @@ const REPO = "duncan1315/TicketNotify";
 function setupLinks() {
   document.getElementById("add-route-link").href =
     `https://github.com/${REPO}/issues/new?template=track-route.yml`;
+  document.getElementById("add-flight-link").href =
+    `https://github.com/${REPO}/issues/new?template=track-flight.yml`;
   document.getElementById("manual-check-link").href =
     `https://github.com/${REPO}/actions/workflows/manual-query.yml`;
 }
@@ -111,6 +113,64 @@ function renderRouteCard(route) {
   return card;
 }
 
+function renderTrackedFlightCard(tracked) {
+  const latest = tracked.latest || {};
+  const wasChecked = latest.checked_at != null;
+  const wasFound = latest.found === true;
+
+  const card = document.createElement("a");
+  card.className = `route-card ${wasFound ? "status-under" : ""}`;
+  card.href = `route.html?id=${encodeURIComponent(tracked.id)}`;
+
+  const header = document.createElement("div");
+  header.className = "route-card-header";
+
+  const title = document.createElement("h2");
+  title.textContent = tracked.issue_title || `${tracked.origin} \u2192 ${tracked.destination}`;
+
+  const badgeLabel = !wasChecked ? "Watching" : wasFound ? "Found" : "Not found last check";
+  const badge = document.createElement("span");
+  badge.className = `status-badge ${wasFound ? "status-under" : "status-watching"}`;
+  badge.textContent = badgeLabel;
+
+  header.append(title, badge);
+
+  const details = document.createElement("dl");
+  details.className = "route-details";
+  details.append(
+    detailRow("Route", `${tracked.origin} \u2192 ${tracked.destination}`),
+    detailRow("Date", tracked.date),
+    detailRow("Airline", tracked.airline),
+    detailRow("Departure / arrival", `${tracked.departure_time} \u2192 ${tracked.arrival_time}`),
+    detailRow("Last checked", formatTimestamp(latest.checked_at)),
+  );
+
+  card.append(header, details);
+
+  const priceLabel = document.createElement("p");
+  priceLabel.className = "route-details";
+  const dt = document.createElement("dt");
+  dt.textContent = "Last seen price";
+  priceLabel.appendChild(dt);
+  card.appendChild(priceLabel);
+
+  if (wasFound && latest.price != null) {
+    card.appendChild(renderFlapPrice(`${latest.price} ${tracked.currency}`));
+    const stopsNote = document.createElement("p");
+    stopsNote.className = "price-note";
+    stopsNote.textContent = formatStops(latest.stops);
+    card.appendChild(stopsNote);
+  } else {
+    const notFound = document.createElement("p");
+    notFound.textContent = wasChecked ? "Not found in the last check" : "Not checked yet";
+    notFound.style.color = "var(--ink-muted)";
+    notFound.style.fontSize = "14px";
+    card.appendChild(notFound);
+  }
+
+  return card;
+}
+
 function detailRow(label, value) {
   const row = document.createElement("div");
   const dt = document.createElement("dt");
@@ -144,5 +204,29 @@ async function loadRoutes() {
   }
 }
 
+async function loadTrackedFlights() {
+  const listEl = document.getElementById("tracked-flight-list");
+  const emptyState = document.getElementById("tracked-empty-state");
+
+  try {
+    const response = await fetch("data/tracked-index.json", { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+    const trackedFlights = await response.json();
+
+    if (!trackedFlights.length) {
+      emptyState.textContent = "No specific flights tracked yet.";
+      return;
+    }
+
+    emptyState.remove();
+    trackedFlights.forEach((tracked) => listEl.appendChild(renderTrackedFlightCard(tracked)));
+  } catch (error) {
+    emptyState.textContent = "No tracked flight data yet. It appears after the first scheduled check runs.";
+  }
+}
+
 setupLinks();
 loadRoutes();
+loadTrackedFlights();

@@ -1,0 +1,82 @@
+name: Track a specific flight
+description: Track the price of one specific flight (by airline + times) on trip.com
+title: "[flight] "
+labels:
+  - track-flight
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This tracks one specific flight across repeated searches, matched by airline and departure/arrival time — not just "the cheapest flight on this route". If trip.com doesn't show this exact flight on a given check, that check is recorded as not found rather than guessed.
+
+  - type: input
+    id: origin
+    attributes:
+      label: Origin airport code
+      description: IATA code, for example TPE
+      value: TPE
+    validations:
+      required: true
+
+  - type: input
+    id: destination
+    attributes:
+      label: Destination airport code
+      value: NRT
+    validations:
+      required: true
+
+  - type: input
+    id: departure_date
+    attributes:
+      label: Departure date
+      description: Format YYYY-MM-DD
+      value: "2026-09-01"
+    validations:
+      required: true
+
+  - type: input
+    id: airline
+    attributes:
+      label: Airline name
+      description: Must match the airline name text trip.com shows on the flight card, for example "EVA Air"
+      placeholder: "EVA Air"
+    validations:
+      required: true
+
+  - type: input
+    id: departure_time
+    attributes:
+      label: Departure time
+      description: 24-hour HH:MM, as shown on trip.com for this flight
+      placeholder: "08:30"
+    validations:
+      required: true
+
+  - type: input
+    id: arrival_time
+    attributes:
+      label: Arrival time
+      description: 24-hour HH:MM, as shown on trip.com for this flight
+      placeholder: "12:45"
+    validations:
+      required: true
+
+  - type: input
+    id: currency
+    attributes:
+      label: Currency code
+      value: TWD
+    validations:
+      required: true
+
+  - type: dropdown
+    id: notify_channel
+    attributes:
+      label: Notification channel
+      options:
+        - discord
+        - telegram
+      default: 0
+    validations:
+      required: true

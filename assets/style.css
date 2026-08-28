@@ -115,6 +115,17 @@ main {
   gap: 16px;
 }
 
+.section-heading {
+  max-width: 880px;
+  margin: 48px auto 16px;
+  padding: 0 24px;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
 .empty-state {
   grid-column: 1 / -1;
   color: var(--ink-muted);

@@ -53,6 +53,31 @@ function renderRouteHeader(route) {
     `Budget ${route.budget} ${route.currency} \u00b7 ${dateRange}`;
 }
 
+function renderTrackedFlightHeader(tracked) {
+  const label = tracked.issue_title || `${tracked.origin} \u2192 ${tracked.destination}`;
+  document.getElementById("route-title").textContent = label;
+  document.title = `${label} — Flight history`;
+
+  document.getElementById("route-subtitle").textContent =
+    `${tracked.airline} \u00b7 ${tracked.departure_time} \u2192 ${tracked.arrival_time} \u00b7 ${tracked.date}`;
+}
+
+// Reshapes a tracked-flight history entry (price/stops/found) into the
+// same field names renderChart() and renderHistoryTable() already expect
+// (lowest_price/lowest_price_stops/match_count), so those two rendering
+// functions can be shared between routes and tracked flights instead of
+// needing a second parallel implementation for each. match_count is 1
+// when the flight was found in that check and 0 when it wasn't — the
+// tracked-flight equivalent of "did anything match the route's filters".
+function normalizeTrackedHistoryEntry(entry) {
+  return {
+    checked_at: entry.checked_at,
+    lowest_price: entry.price,
+    lowest_price_stops: entry.stops,
+    match_count: entry.found ? 1 : 0,
+  };
+}
+
 // A minimal inline line chart. No charting library is used here because
 // the rest of this project has zero build tooling or npm dependencies —
 // pulling one in for a single chart would be a heavier change than the
@@ -210,14 +235,24 @@ function renderHistoryTable(history) {
 }
 
 async function loadRouteDetail() {
-  const detailSection = document.getElementById("route-detail");
   const emptyState = document.getElementById("detail-empty-state");
-  const routeId = getRouteIdFromUrl();
+  const id = getRouteIdFromUrl();
 
-  if (!routeId) {
-    emptyState.textContent = "No route specified. Go back and pick a route from the list.";
+  if (!id) {
+    emptyState.textContent = "No route specified. Go back and pick one from the list.";
     return;
   }
+
+  if (id.startsWith("flight-")) {
+    await loadTrackedFlightDetail(id);
+  } else {
+    await loadRouteOnlyDetail(id);
+  }
+}
+
+async function loadRouteOnlyDetail(routeId) {
+  const detailSection = document.getElementById("route-detail");
+  const emptyState = document.getElementById("detail-empty-state");
 
   try {
     const indexResponse = await fetch("data/index.json", { cache: "no-store" });
@@ -259,6 +294,54 @@ async function loadRouteDetail() {
     detailSection.appendChild(renderHistoryTable(history));
   } catch (error) {
     emptyState.textContent = "Couldn't load this route's history.";
+  }
+}
+
+async function loadTrackedFlightDetail(trackedId) {
+  const detailSection = document.getElementById("route-detail");
+  const emptyState = document.getElementById("detail-empty-state");
+
+  try {
+    const indexResponse = await fetch("data/tracked-index.json", { cache: "no-store" });
+    if (!indexResponse.ok) {
+      throw new Error(`Request failed with status ${indexResponse.status}`);
+    }
+    const trackedFlights = await indexResponse.json();
+    const tracked = trackedFlights.find((t) => t.id === trackedId);
+
+    if (!tracked) {
+      emptyState.textContent = "This tracked flight wasn't found. It may have been removed.";
+      return;
+    }
+
+    renderTrackedFlightHeader(tracked);
+
+    const historyResponse = await fetch(`data/${trackedId}/history.jsonl`, { cache: "no-store" });
+    if (!historyResponse.ok) {
+      throw new Error(`Request failed with status ${historyResponse.status}`);
+    }
+    const historyText = await historyResponse.text();
+    const rawHistory = parseJsonl(historyText);
+    const history = rawHistory.map(normalizeTrackedHistoryEntry);
+
+    emptyState.remove();
+
+    if (history.length === 0) {
+      const empty = document.createElement("p");
+      empty.className = "empty-state";
+      empty.textContent = "No checks recorded yet for this flight.";
+      detailSection.appendChild(empty);
+      return;
+    }
+
+    const chartWrap = document.createElement("div");
+    chartWrap.className = "history-chart-wrap";
+    chartWrap.appendChild(renderChart(history));
+    detailSection.appendChild(chartWrap);
+
+    detailSection.appendChild(renderHistoryTable(history));
+  } catch (error) {
+    emptyState.textContent = "Couldn't load this flight's history.";
   }
 }
 

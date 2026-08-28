@@ -1,0 +1,43 @@
+name: Delete tracked flight on issue close
+
+on:
+  issues:
+    types: [closed]
+
+jobs:
+  delete:
+    if: contains(github.event.issue.labels.*.name, 'track-flight')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Delete tracked flight data
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: python scraper/delete_tracked_flight.py
+
+      - name: Commit deletion
+        run: |
+          git config user.name "route-bot"
+          git config user.email "route-bot@users.noreply.github.com"
+          git add flights/ data/
+          git diff --cached --quiet || git commit -m "Remove tracked flight from closed issue #${{ github.event.issue.number }}"
+          git push
+
+      - name: Comment on issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: "Tracked flight and its price history have been removed. Reopen and edit this issue to start tracking it again.",
+            });
