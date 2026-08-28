@@ -58,8 +58,11 @@ function renderTrackedFlightHeader(tracked) {
   document.getElementById("route-title").textContent = label;
   document.title = `${label} — Flight history`;
 
+  const matchedAirline = tracked.latest && tracked.latest.airline;
+  const airlineNote = matchedAirline ? ` \u00b7 ${matchedAirline}` : "";
+
   document.getElementById("route-subtitle").textContent =
-    `${tracked.airline} \u00b7 ${tracked.departure_time} \u2192 ${tracked.arrival_time} \u00b7 ${tracked.date}`;
+    `${tracked.departure_time} \u2192 ${tracked.arrival_time} \u00b7 ${tracked.date}${airlineNote}`;
 }
 
 // Reshapes a tracked-flight history entry (price/stops/found) into the

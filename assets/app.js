@@ -140,10 +140,12 @@ function renderTrackedFlightCard(tracked) {
   details.append(
     detailRow("Route", `${tracked.origin} \u2192 ${tracked.destination}`),
     detailRow("Date", tracked.date),
-    detailRow("Airline", tracked.airline),
     detailRow("Departure / arrival", `${tracked.departure_time} \u2192 ${tracked.arrival_time}`),
     detailRow("Last checked", formatTimestamp(latest.checked_at)),
   );
+  if (latest.airline) {
+    details.appendChild(detailRow("Matched airline", latest.airline));
+  }
 
   card.append(header, details);
 

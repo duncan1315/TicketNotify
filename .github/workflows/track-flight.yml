@@ -1,5 +1,5 @@
 name: Track a specific flight
-description: Track the price of one specific flight (by airline + times) on trip.com
+description: Track the price of one specific flight (by departure/arrival time) on trip.com
 title: "[flight] "
 labels:
   - track-flight
@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        This tracks one specific flight across repeated searches, matched by airline and departure/arrival time — not just "the cheapest flight on this route". If trip.com doesn't show this exact flight on a given check, that check is recorded as not found rather than guessed.
+        This tracks one specific flight across repeated searches, matched by departure/arrival time — not just "the cheapest flight on this route". If trip.com doesn't show this exact flight on a given check, that check is recorded as not found rather than guessed. In the rare case two different airlines have flights at the exact same times, this may match either one — the matched flight's airline is always shown on the results page so you can check.
 
   - type: input
     id: origin
@@ -32,15 +32,6 @@ body:
       label: Departure date
       description: Format YYYY-MM-DD
       value: "2026-09-01"
-    validations:
-      required: true
-
-  - type: input
-    id: airline
-    attributes:
-      label: Airline name
-      description: Must match the airline name text trip.com shows on the flight card, for example "EVA Air"
-      placeholder: "EVA Air"
     validations:
       required: true
 

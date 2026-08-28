@@ -32,9 +32,7 @@ def extract_hhmm(value):
     return value.split(" ")[1][:5] if " " in value else value[:5]
 
 
-def matches_tracked_flight(flight, tracked):
-    if flight.get("airline", "").strip().lower() != tracked["airline"].strip().lower():
-        return False
+def matches_tracked_flight_time(flight, tracked):
     if extract_hhmm(flight.get("departure_time")) != tracked["departure_time"]:
         return False
     if extract_hhmm(flight.get("arrival_time")) != tracked["arrival_time"]:
@@ -44,8 +42,17 @@ def matches_tracked_flight(flight, tracked):
 
 def find_tracked_flight(flights, tracked):
     """Return the first scraped flight matching a tracked flight's
-    fingerprint (airline + departure/arrival time), or None if this
-    check's search results don't include it at all.
+    fingerprint (departure/arrival time only — airline isn't collected
+    from the form), or None if this check's search results don't include
+    a matching time at all.
+
+    If two different flights share the exact same departure and arrival
+    time (rare, but possible when two airlines happen to overlap), this
+    returns whichever one appears first in trip.com's results list for
+    this check — not a random pick, and not verified against airline
+    identity. The matched flight's actual airline is still recorded in
+    the saved result, so a same-time collision is visible after the fact
+    even though it isn't prevented up front.
 
     A missing match is an expected, ordinary outcome (schedule changed,
     sold out, trip.com's result page just didn't surface it this time) —
@@ -53,7 +60,7 @@ def find_tracked_flight(flights, tracked):
     this time", not as a failure to be raised or retried.
     """
     for flight in flights:
-        if matches_tracked_flight(flight, tracked):
+        if matches_tracked_flight_time(flight, tracked):
             return flight
     return None
 
@@ -69,6 +76,7 @@ def save_tracked_result(tracked_id, found_flight):
             "price": found_flight.get("price"),
             "stops": found_flight.get("stops"),
             "duration_minutes": found_flight.get("duration_minutes"),
+            "airline": found_flight.get("airline"),
         }
     else:
         entry = {
@@ -77,6 +85,7 @@ def save_tracked_result(tracked_id, found_flight):
             "price": None,
             "stops": None,
             "duration_minutes": None,
+            "airline": None,
         }
 
     with open(flight_dir / "latest.json", "w") as f:
