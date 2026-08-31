@@ -14,8 +14,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1788161485,
-      "lowest_price": 9946.0,
+      "checked_at": 1788162070,
+      "lowest_price": 9944.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 210,
       "flight_count": 8,
@@ -37,8 +37,8 @@
     "max_duration_minutes": 1200.0,
     "active": true,
     "latest": {
-      "checked_at": 1788161502,
-      "lowest_price": 34151.0,
+      "checked_at": 1788162089,
+      "lowest_price": 34133.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 1545,
       "flight_count": 8,
@@ -60,8 +60,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1788161515,
-      "lowest_price": 11052.0,
+      "checked_at": 1788162105,
+      "lowest_price": 11487.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 190,
       "flight_count": 8,
