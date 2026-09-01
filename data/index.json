@@ -1,5 +1,28 @@
 [
   {
+    "id": "route-18",
+    "issue_number": 18,
+    "issue_title": "[route] JP-202702",
+    "origin": "TPE",
+    "destination": "NRT",
+    "trip_type": "round_trip",
+    "date": "2027-02-25",
+    "return_date": "2027-03-01",
+    "budget": 9000.0,
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "max_duration_minutes": 240.0,
+    "active": true,
+    "latest": {
+      "checked_at": 1788245558,
+      "lowest_price": 11487.0,
+      "lowest_price_stops": 0,
+      "lowest_price_duration_minutes": 190,
+      "flight_count": 8,
+      "match_count": 0
+    }
+  },
+  {
     "id": "route-15",
     "issue_number": 15,
     "issue_title": "[route] Italy",
@@ -14,8 +37,8 @@
     "max_duration_minutes": 1200.0,
     "active": true,
     "latest": {
-      "checked_at": 1788245163,
-      "lowest_price": 33564.0,
+      "checked_at": 1788245570,
+      "lowest_price": 33562.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 1585,
       "flight_count": 8,
