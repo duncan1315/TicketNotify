@@ -1,0 +1,15 @@
+{
+  "id": "route-18",
+  "issue_number": 18,
+  "issue_title": "[route] JP-202702",
+  "origin": "TPE",
+  "destination": "NRT",
+  "trip_type": "round_trip",
+  "date": "2027-02-25",
+  "return_date": "2027-03-01",
+  "budget": 9000.0,
+  "currency": "TWD",
+  "notify_channel": "discord",
+  "max_duration_minutes": 240.0,
+  "active": true
+}
