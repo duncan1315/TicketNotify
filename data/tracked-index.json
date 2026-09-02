@@ -12,12 +12,12 @@
     "notify_channel": "discord",
     "active": true,
     "latest": {
-      "checked_at": 1788374586,
-      "found": false,
-      "price": null,
-      "stops": null,
-      "duration_minutes": null,
-      "airline": null
+      "checked_at": 1788375180,
+      "found": true,
+      "price": 8695.0,
+      "stops": 0,
+      "duration_minutes": 185,
+      "airline": "Jetstar Japan"
     }
   }
 ]
