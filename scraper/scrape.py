@@ -9,7 +9,6 @@ from playwright_stealth import Stealth
 
 from ai_stops import infer_stops
 from notify import send_notification
-from expire_routes import close_expired_routes
 from track_flight import (
     load_active_tracked_flights,
     find_tracked_flight,
@@ -367,17 +366,6 @@ def main():
     tracked_flights = load_active_tracked_flights()
     if not routes and not tracked_flights:
         print("No active routes or tracked flights found")
-        return
-
-    github_token = os.environ.get("GITHUB_TOKEN")
-    repo = os.environ.get("GITHUB_REPOSITORY")
-    if github_token and repo:
-        routes, _ = close_expired_routes(routes, repo, github_token, ROUTES_DIR)
-    else:
-        print("GITHUB_TOKEN or GITHUB_REPOSITORY not set, skipping expiry check")
-
-    if not routes and not tracked_flights:
-        print("No active routes or tracked flights remain after expiry check")
         return
 
     summaries = []
