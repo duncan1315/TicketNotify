@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": "flight-20",
+    "issue_number": 20,
+    "issue_title": "[flight] JP-202702",
+    "origin": "TPE",
+    "destination": "NRT",
+    "date": "2027-02-25",
+    "departure_time": "02:30",
+    "arrival_time": "06:35",
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "active": true,
+    "latest": {
+      "checked_at": 1788339362,
+      "found": true,
+      "price": 8945.0,
+      "stops": 0,
+      "duration_minutes": 185,
+      "airline": "Jetstar Japan"
+    }
+  }
+]
