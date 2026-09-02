@@ -130,6 +130,23 @@ def wait_for_prices_to_settle(page, poll_ms=1000, max_wait_ms=15000, stable_poll
         last_count = count
 
 
+def scroll_to_load_more_cards(page, scroll_count=3, wait_ms=1500):
+    # trip.com renders some flights only after scrolling — confirmed
+    # directly against a live page, not assumed. This scrolls a fixed
+    # number of times rather than looping "until no new cards appear":
+    # trip.com's actual scroll-triggered loading behavior (infinite
+    # scroll vs a fixed page of results vs a "load more" click target)
+    # has never been observed here, so a fixed count with a hard ceiling
+    # was chosen over an open-ended loop that could stall or spin
+    # forever against behavior this code can't anticipate. If flights
+    # further down the results are still being missed, raising
+    # scroll_count is the first thing to try — see extract_flights.
+    for _ in range(scroll_count):
+        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+        page.wait_for_timeout(wait_ms)
+        wait_for_prices_to_settle(page)
+
+
 def extract_flights(page):
     # Selectors confirmed against a real trip.com debug snapshot
     # (see routes/route-3 debug HTML). Cards render as shimmer
@@ -138,6 +155,7 @@ def extract_flights(page):
     # read the page; placeholder cards without a price are skipped.
     page.wait_for_selector(PRICE_SELECTOR, timeout=30000)
     wait_for_prices_to_settle(page)
+    scroll_to_load_more_cards(page)
     cards = page.query_selector_all(CARD_SELECTOR)
 
     flights = []
