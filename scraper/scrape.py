@@ -9,6 +9,7 @@ from playwright_stealth import Stealth
 
 from ai_stops import infer_stops
 from notify import send_notification
+from expire_routes import close_expired_routes
 from track_flight import (
     load_active_tracked_flights,
     find_tracked_flight,
@@ -160,6 +161,8 @@ def extract_flights(page):
             "stops": parse_stops(card_text),
             "departure_time": parse_time_testid(departure_el) if departure_el else None,
             "arrival_time": parse_time_testid(arrival_el) if arrival_el else None,
+            "_raw_price_text": price_el.inner_text(),
+            "_raw_card_text": card_text,
         })
         card_texts.append(card_text)
 
@@ -348,6 +351,8 @@ def check_tracked_flight(context, tracked):
         print(f"{tracked['id']}: not found in this check's search results")
     else:
         print(f"{tracked['id']}: found, price {entry['price']}" + (" (NEW LOW)" if is_new_low else ""))
+        print(f"{tracked['id']}: DEBUG raw price text: {found_flight.get('_raw_price_text')!r}")
+        print(f"{tracked['id']}: DEBUG full card text: {found_flight.get('_raw_card_text')!r}")
 
     if found_flight is not None:
         found_flight = {**found_flight, "is_new_low": is_new_low}
@@ -362,6 +367,17 @@ def main():
     tracked_flights = load_active_tracked_flights()
     if not routes and not tracked_flights:
         print("No active routes or tracked flights found")
+        return
+
+    github_token = os.environ.get("GITHUB_TOKEN")
+    repo = os.environ.get("GITHUB_REPOSITORY")
+    if github_token and repo:
+        routes, _ = close_expired_routes(routes, repo, github_token, ROUTES_DIR)
+    else:
+        print("GITHUB_TOKEN or GITHUB_REPOSITORY not set, skipping expiry check")
+
+    if not routes and not tracked_flights:
+        print("No active routes or tracked flights remain after expiry check")
         return
 
     summaries = []
