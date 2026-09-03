@@ -122,3 +122,4 @@
 {"checked_at": 1788411789, "found": false, "price": null, "stops": null, "duration_minutes": null, "airline": null}
 {"checked_at": 1788412393, "found": true, "price": 8682.0, "stops": 0, "duration_minutes": 185, "airline": "Jetstar Japan"}
 {"checked_at": 1788412945, "found": true, "price": 8681.0, "stops": 0, "duration_minutes": 185, "airline": "Jetstar Japan"}
+{"checked_at": 1788413553, "found": true, "price": 8681.0, "stops": 0, "duration_minutes": 185, "airline": "Jetstar Japan"}
