@@ -1,28 +1,5 @@
 [
   {
-    "id": "route-15",
-    "issue_number": 15,
-    "issue_title": "[route] Italy",
-    "origin": "TPE",
-    "destination": "MXP",
-    "trip_type": "round_trip",
-    "date": "2026-03-10",
-    "return_date": "2026-03-21",
-    "budget": 33000.0,
-    "currency": "TWD",
-    "notify_channel": "discord",
-    "max_duration_minutes": 1200.0,
-    "active": true,
-    "latest": {
-      "checked_at": 1788494497,
-      "lowest_price": 30068.0,
-      "lowest_price_stops": 2,
-      "lowest_price_duration_minutes": 1710,
-      "flight_count": 9,
-      "match_count": 0
-    }
-  },
-  {
     "id": "route-18",
     "issue_number": 18,
     "issue_title": "[route] JP-202702",
@@ -37,11 +14,34 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1788494526,
-      "lowest_price": 11024.0,
+      "checked_at": 1788495088,
+      "lowest_price": 11032.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 190,
-      "flight_count": 9,
+      "flight_count": 8,
+      "match_count": 0
+    }
+  },
+  {
+    "id": "route-15",
+    "issue_number": 15,
+    "issue_title": "[route] Italy",
+    "origin": "TPE",
+    "destination": "MXP",
+    "trip_type": "round_trip",
+    "date": "2026-03-10",
+    "return_date": "2026-03-21",
+    "budget": 33000.0,
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "max_duration_minutes": 1200.0,
+    "active": true,
+    "latest": {
+      "checked_at": 1788495117,
+      "lowest_price": 34266.0,
+      "lowest_price_stops": null,
+      "lowest_price_duration_minutes": 1585,
+      "flight_count": 8,
       "match_count": 0
     }
   }
