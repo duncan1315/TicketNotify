@@ -117,9 +117,10 @@ function renderTrackedFlightCard(tracked) {
   const latest = tracked.latest || {};
   const wasChecked = latest.checked_at != null;
   const wasFound = latest.found === true;
+  const withinBudget = wasFound && latest.price != null && latest.price <= tracked.budget;
 
   const card = document.createElement("a");
-  card.className = `route-card ${wasFound ? "status-under" : ""}`;
+  card.className = `route-card ${withinBudget ? "status-under" : ""}`;
   card.href = `route.html?id=${encodeURIComponent(tracked.id)}`;
 
   const header = document.createElement("div");
@@ -128,9 +129,15 @@ function renderTrackedFlightCard(tracked) {
   const title = document.createElement("h2");
   title.textContent = tracked.issue_title || `${tracked.origin} \u2192 ${tracked.destination}`;
 
-  const badgeLabel = !wasChecked ? "Watching" : wasFound ? "Found" : "Not found last check";
+  const badgeLabel = !wasChecked
+    ? "Watching"
+    : !wasFound
+    ? "Not found last check"
+    : withinBudget
+    ? "Found"
+    : "Over budget";
   const badge = document.createElement("span");
-  badge.className = `status-badge ${wasFound ? "status-under" : "status-watching"}`;
+  badge.className = `status-badge ${withinBudget ? "status-under" : "status-watching"}`;
   badge.textContent = badgeLabel;
 
   header.append(title, badge);
@@ -141,6 +148,7 @@ function renderTrackedFlightCard(tracked) {
     detailRow("Route", `${tracked.origin} \u2192 ${tracked.destination}`),
     detailRow("Date", tracked.date),
     detailRow("Departure / arrival", `${tracked.departure_time} \u2192 ${tracked.arrival_time}`),
+    detailRow("Budget", `${tracked.budget} ${tracked.currency}`),
     detailRow("Last checked", formatTimestamp(latest.checked_at)),
   );
   if (latest.airline) {

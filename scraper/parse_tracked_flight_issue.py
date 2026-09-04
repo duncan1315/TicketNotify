@@ -9,6 +9,7 @@ FIELD_MAP = {
     "Departure date": "date",
     "Departure time": "departure_time",
     "Arrival time": "arrival_time",
+    "Budget threshold": "budget",
     "Currency code": "currency",
     "Notification channel": "notify_channel",
 }
@@ -19,6 +20,7 @@ REQUIRED_FIELDS = [
     "date",
     "departure_time",
     "arrival_time",
+    "budget",
     "currency",
     "notify_channel",
 ]
@@ -54,6 +56,7 @@ def build_tracked_flight(issue_number, issue_title, parsed):
         "date": parsed["date"],
         "departure_time": parsed["departure_time"].strip(),
         "arrival_time": parsed["arrival_time"].strip(),
+        "budget": float(parsed["budget"]),
         "currency": parsed["currency"].upper(),
         "notify_channel": parsed["notify_channel"].lower(),
         "active": True,

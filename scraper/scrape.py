@@ -364,17 +364,22 @@ def check_tracked_flight(context, tracked):
 
     entry = save_tracked_result(tracked["id"], found_flight)
 
+    under_budget = found_flight is not None and found_flight["price"] <= tracked["budget"]
+
     if found_flight is None:
         print(f"{tracked['id']}: not found in this check's search results")
+    elif not under_budget:
+        print(f"{tracked['id']}: found, price {entry['price']} exceeds budget {tracked['budget']}, no notification")
+        print(f"{tracked['id']}: DEBUG raw price text: {found_flight.get('_raw_price_text')!r}")
+        print(f"{tracked['id']}: DEBUG full card text: {found_flight.get('_raw_card_text')!r}")
     else:
         print(f"{tracked['id']}: found, price {entry['price']}" + (" (NEW LOW)" if is_new_low else ""))
         print(f"{tracked['id']}: DEBUG raw price text: {found_flight.get('_raw_price_text')!r}")
         print(f"{tracked['id']}: DEBUG full card text: {found_flight.get('_raw_card_text')!r}")
 
-    if found_flight is not None:
+    if under_budget:
         found_flight = {**found_flight, "is_new_low": is_new_low}
-        notify_target = {**tracked, "budget": "Tracking"}
-        send_notification(notify_target, [found_flight])
+        send_notification(tracked, [found_flight])
 
     return {**tracked, "latest": entry}
 

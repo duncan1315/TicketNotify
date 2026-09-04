@@ -54,6 +54,15 @@ body:
       required: true
 
   - type: input
+    id: budget
+    attributes:
+      label: Budget threshold
+      description: Notify only when this flight's price is at or below this amount
+      placeholder: "9000"
+    validations:
+      required: true
+
+  - type: input
     id: currency
     attributes:
       label: Currency code
