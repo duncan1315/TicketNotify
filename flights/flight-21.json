@@ -1,0 +1,14 @@
+{
+  "id": "flight-21",
+  "issue_number": 21,
+  "issue_title": "[flight] JP-202702",
+  "origin": "TPE",
+  "destination": "NRT",
+  "date": "2027-02-25",
+  "departure_time": "02:30",
+  "arrival_time": "06:35",
+  "budget": 9000.0,
+  "currency": "TWD",
+  "notify_channel": "discord",
+  "active": true
+}
