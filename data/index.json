@@ -14,7 +14,7 @@
     "max_duration_minutes": 1200.0,
     "active": true,
     "latest": {
-      "checked_at": 1788962516,
+      "checked_at": 1788963100,
       "lowest_price": 25386.0,
       "lowest_price_stops": null,
       "lowest_price_duration_minutes": 1735,
@@ -37,7 +37,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1788962542,
+      "checked_at": 1788963128,
       "lowest_price": 14126.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 190,
