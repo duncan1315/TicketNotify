@@ -13,9 +13,9 @@
     "notify_channel": "discord",
     "active": true,
     "latest": {
-      "checked_at": 1789032146,
+      "checked_at": 1789032758,
       "found": true,
-      "price": 8589.0,
+      "price": 8594.0,
       "stops": 0,
       "duration_minutes": 185,
       "airline": "Jetstar Japan"
