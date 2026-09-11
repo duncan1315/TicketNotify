@@ -1,0 +1,15 @@
+{
+  "id": "route-22",
+  "issue_number": 22,
+  "issue_title": "[route] Italy",
+  "origin": "TPE",
+  "destination": "MXP",
+  "trip_type": "round_trip",
+  "date": "2027-03-31",
+  "return_date": "2027-04-11",
+  "budget": 38000.0,
+  "currency": "TWD",
+  "notify_channel": "discord",
+  "max_duration_minutes": 900.0,
+  "active": true
+}
