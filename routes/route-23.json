@@ -1,0 +1,15 @@
+{
+  "id": "route-23",
+  "issue_number": 23,
+  "issue_title": "[route] VN",
+  "origin": "TPE",
+  "destination": "SGN",
+  "trip_type": "round_trip",
+  "date": "2026-11-06",
+  "return_date": "2026-11-08",
+  "budget": 6000.0,
+  "currency": "TWD",
+  "notify_channel": "discord",
+  "max_duration_minutes": 240.0,
+  "active": true
+}
