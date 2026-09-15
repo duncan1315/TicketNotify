@@ -407,8 +407,11 @@ def main():
 
             print(f"{route['id']}: {len(flights)} flight(s) seen, {len(matches)} match(es), lowest price {latest['lowest_price']}")
 
-            if matches:
+            has_new_low = any(flight.get("is_new_low") for flight in matches)
+            if matches and has_new_low:
                 send_notification(route, matches)
+            elif matches:
+                print(f"{route['id']}: {len(matches)} match(es) within budget, but none beat the historical low — no notification")
 
         tracked_summaries = []
         for tracked in tracked_flights:
