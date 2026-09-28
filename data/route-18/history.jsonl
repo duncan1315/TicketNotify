@@ -3639,3 +3639,4 @@
 {"checked_at": 1790629317, "lowest_price": null, "lowest_price_stops": null, "lowest_price_duration_minutes": null, "flight_count": 0, "match_count": 0}
 {"checked_at": 1790629888, "lowest_price": null, "lowest_price_stops": null, "lowest_price_duration_minutes": null, "flight_count": 0, "match_count": 0}
 {"checked_at": 1790630490, "lowest_price": 12399.0, "lowest_price_stops": 0, "lowest_price_duration_minutes": 190, "flight_count": 8, "match_count": 0}
+{"checked_at": 1790631120, "lowest_price": 12399.0, "lowest_price_stops": 0, "lowest_price_duration_minutes": 190, "flight_count": 8, "match_count": 0}
