@@ -1,5 +1,28 @@
 [
   {
+    "id": "route-22",
+    "issue_number": 22,
+    "issue_title": "[route] Italy",
+    "origin": "TPE",
+    "destination": "MXP",
+    "trip_type": "round_trip",
+    "date": "2027-03-31",
+    "return_date": "2027-04-11",
+    "budget": 38000.0,
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "max_duration_minutes": 900.0,
+    "active": true,
+    "latest": {
+      "checked_at": 1792554684,
+      "lowest_price": 29729.0,
+      "lowest_price_stops": 1,
+      "lowest_price_duration_minutes": 1410,
+      "flight_count": 8,
+      "match_count": 0
+    }
+  },
+  {
     "id": "route-18",
     "issue_number": 18,
     "issue_title": "[route] JP-202702",
@@ -14,33 +37,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1792554081,
-      "lowest_price": 13904.0,
+      "checked_at": 1792554715,
+      "lowest_price": 13880.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 195,
-      "flight_count": 8,
-      "match_count": 0
-    }
-  },
-  {
-    "id": "route-23",
-    "issue_number": 23,
-    "issue_title": "[route] VN",
-    "origin": "TPE",
-    "destination": "SGN",
-    "trip_type": "round_trip",
-    "date": "2026-11-06",
-    "return_date": "2026-11-08",
-    "budget": 6000.0,
-    "currency": "TWD",
-    "notify_channel": "discord",
-    "max_duration_minutes": 240.0,
-    "active": true,
-    "latest": {
-      "checked_at": 1792554108,
-      "lowest_price": 8430.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 220,
       "flight_count": 8,
       "match_count": 0
     }
@@ -60,33 +60,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1792554139,
-      "lowest_price": 7762.0,
+      "checked_at": 1792554743,
+      "lowest_price": 7749.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
-      "flight_count": 8,
-      "match_count": 0
-    }
-  },
-  {
-    "id": "route-22",
-    "issue_number": 22,
-    "issue_title": "[route] Italy",
-    "origin": "TPE",
-    "destination": "MXP",
-    "trip_type": "round_trip",
-    "date": "2027-03-31",
-    "return_date": "2027-04-11",
-    "budget": 38000.0,
-    "currency": "TWD",
-    "notify_channel": "discord",
-    "max_duration_minutes": 900.0,
-    "active": true,
-    "latest": {
-      "checked_at": 1792554167,
-      "lowest_price": 29725.0,
-      "lowest_price_stops": 1,
-      "lowest_price_duration_minutes": 1410,
       "flight_count": 8,
       "match_count": 0
     }
@@ -106,8 +83,31 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1792554195,
-      "lowest_price": 8592.0,
+      "checked_at": 1792554771,
+      "lowest_price": 8781.0,
+      "lowest_price_stops": 0,
+      "lowest_price_duration_minutes": 220,
+      "flight_count": 8,
+      "match_count": 0
+    }
+  },
+  {
+    "id": "route-23",
+    "issue_number": 23,
+    "issue_title": "[route] VN",
+    "origin": "TPE",
+    "destination": "SGN",
+    "trip_type": "round_trip",
+    "date": "2026-11-06",
+    "return_date": "2026-11-08",
+    "budget": 6000.0,
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "max_duration_minutes": 240.0,
+    "active": true,
+    "latest": {
+      "checked_at": 1792554802,
+      "lowest_price": 8616.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
       "flight_count": 8,
@@ -129,8 +129,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1792554221,
-      "lowest_price": 7617.0,
+      "checked_at": 1792554829,
+      "lowest_price": 7604.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
       "flight_count": 8,
