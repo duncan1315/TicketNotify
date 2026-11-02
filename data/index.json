@@ -14,8 +14,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793630487,
-      "lowest_price": 7793.0,
+      "checked_at": 1793631097,
+      "lowest_price": 7804.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
       "flight_count": 8,
@@ -37,10 +37,10 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1793630524,
-      "lowest_price": 35116.0,
+      "checked_at": 1793631131,
+      "lowest_price": 33841.0,
       "lowest_price_stops": 1,
-      "lowest_price_duration_minutes": 1015,
+      "lowest_price_duration_minutes": 2100,
       "flight_count": 8,
       "match_count": 0
     }
@@ -60,7 +60,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793630554,
+      "checked_at": 1793631162,
       "lowest_price": 8240.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
@@ -83,8 +83,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793630586,
-      "lowest_price": 14328.0,
+      "checked_at": 1793631198,
+      "lowest_price": 14290.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 180,
       "flight_count": 8,
@@ -106,10 +106,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793630622,
-      "lowest_price": 8029.0,
-      "lowest_price_stops": 1,
-      "lowest_price_duration_minutes": 485,
+      "checked_at": 1793631231,
+      "lowest_price": 8986.0,
+      "lowest_price_stops": 0,
+      "lowest_price_duration_minutes": 230,
       "flight_count": 8,
       "match_count": 0
     }
@@ -129,8 +129,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793630650,
-      "lowest_price": 9352.0,
+      "checked_at": 1793631263,
+      "lowest_price": 9354.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
