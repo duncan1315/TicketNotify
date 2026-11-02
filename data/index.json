@@ -14,7 +14,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793661101,
+      "checked_at": 1793661693,
       "lowest_price": 7845.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
@@ -37,10 +37,10 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1793661127,
-      "lowest_price": 33770.0,
+      "checked_at": 1793661723,
+      "lowest_price": 35015.0,
       "lowest_price_stops": null,
-      "lowest_price_duration_minutes": 2100,
+      "lowest_price_duration_minutes": 1015,
       "flight_count": 8,
       "match_count": 0
     }
@@ -60,7 +60,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793661159,
+      "checked_at": 1793661750,
       "lowest_price": 8216.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
@@ -83,10 +83,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793661192,
-      "lowest_price": 14691.0,
+      "checked_at": 1793661784,
+      "lowest_price": 15752.0,
       "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 180,
+      "lowest_price_duration_minutes": 185,
       "flight_count": 8,
       "match_count": 0
     }
@@ -106,10 +106,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793661224,
-      "lowest_price": 9076.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 230,
+      "checked_at": 1793661820,
+      "lowest_price": 8008.0,
+      "lowest_price_stops": null,
+      "lowest_price_duration_minutes": 485,
       "flight_count": 8,
       "match_count": 0
     }
@@ -129,7 +129,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793661250,
+      "checked_at": 1793661848,
       "lowest_price": 9363.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
