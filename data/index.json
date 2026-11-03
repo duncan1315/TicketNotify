@@ -14,8 +14,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793725877,
-      "lowest_price": 8252.0,
+      "checked_at": 1793726706,
+      "lowest_price": 7914.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
       "flight_count": 8,
@@ -37,10 +37,10 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1793725906,
-      "lowest_price": 33014.0,
-      "lowest_price_stops": 1,
-      "lowest_price_duration_minutes": 2100,
+      "checked_at": 1793726743,
+      "lowest_price": 35250.0,
+      "lowest_price_stops": null,
+      "lowest_price_duration_minutes": 1015,
       "flight_count": 8,
       "match_count": 0
     }
@@ -60,8 +60,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793725935,
-      "lowest_price": 8243.0,
+      "checked_at": 1793726773,
+      "lowest_price": 8311.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
       "flight_count": 8,
@@ -83,7 +83,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793725965,
+      "checked_at": 1793726804,
       "lowest_price": 15152.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 180,
@@ -106,10 +106,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793725990,
-      "lowest_price": 9002.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 230,
+      "checked_at": 1793726838,
+      "lowest_price": 8028.0,
+      "lowest_price_stops": null,
+      "lowest_price_duration_minutes": 485,
       "flight_count": 8,
       "match_count": 0
     }
@@ -129,7 +129,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793726016,
+      "checked_at": 1793726867,
       "lowest_price": 9139.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
