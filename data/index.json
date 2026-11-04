@@ -14,7 +14,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793778688,
+      "checked_at": 1793779295,
       "lowest_price": 9061.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
@@ -37,10 +37,10 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1793778717,
-      "lowest_price": 35245.0,
-      "lowest_price_stops": null,
-      "lowest_price_duration_minutes": 1015,
+      "checked_at": 1793779329,
+      "lowest_price": 33014.0,
+      "lowest_price_stops": 1,
+      "lowest_price_duration_minutes": 2100,
       "flight_count": 8,
       "match_count": 0
     }
@@ -60,8 +60,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793778747,
-      "lowest_price": 9136.0,
+      "checked_at": 1793779359,
+      "lowest_price": 9115.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
@@ -83,7 +83,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793778781,
+      "checked_at": 1793779391,
       "lowest_price": 14729.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 180,
@@ -106,10 +106,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793778812,
-      "lowest_price": 8137.0,
-      "lowest_price_stops": null,
-      "lowest_price_duration_minutes": 485,
+      "checked_at": 1793779423,
+      "lowest_price": 9058.0,
+      "lowest_price_stops": 0,
+      "lowest_price_duration_minutes": 230,
       "flight_count": 8,
       "match_count": 0
     }
@@ -129,8 +129,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793778842,
-      "lowest_price": 9138.0,
+      "checked_at": 1793779455,
+      "lowest_price": 9112.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
