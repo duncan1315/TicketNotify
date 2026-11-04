@@ -14,7 +14,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793788288,
+      "checked_at": 1793788883,
       "lowest_price": 9044.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
@@ -37,10 +37,10 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1793788320,
-      "lowest_price": 34185.0,
+      "checked_at": 1793788916,
+      "lowest_price": 34239.0,
       "lowest_price_stops": 1,
-      "lowest_price_duration_minutes": 1110,
+      "lowest_price_duration_minutes": 1015,
       "flight_count": 8,
       "match_count": 0
     }
@@ -60,7 +60,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793788350,
+      "checked_at": 1793788949,
       "lowest_price": 9035.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
@@ -83,10 +83,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793788382,
-      "lowest_price": 13654.0,
-      "lowest_price_stops": 1,
-      "lowest_price_duration_minutes": 880,
+      "checked_at": 1793788978,
+      "lowest_price": 15181.0,
+      "lowest_price_stops": 0,
+      "lowest_price_duration_minutes": 180,
       "flight_count": 8,
       "match_count": 0
     }
@@ -106,10 +106,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793788409,
-      "lowest_price": 9044.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 230,
+      "checked_at": 1793789020,
+      "lowest_price": 8113.0,
+      "lowest_price_stops": 1,
+      "lowest_price_duration_minutes": 485,
       "flight_count": 8,
       "match_count": 0
     }
@@ -129,7 +129,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793788439,
+      "checked_at": 1793789050,
       "lowest_price": 9035.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
