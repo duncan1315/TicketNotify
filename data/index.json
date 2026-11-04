@@ -14,10 +14,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793819637,
-      "lowest_price": 7480.0,
-      "lowest_price_stops": 1,
-      "lowest_price_duration_minutes": 980,
+      "checked_at": 1793820078,
+      "lowest_price": 9101.0,
+      "lowest_price_stops": 0,
+      "lowest_price_duration_minutes": 230,
       "flight_count": 10,
       "match_count": 0
     }
@@ -37,34 +37,11 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1793819668,
-      "lowest_price": 29866.0,
+      "checked_at": 1793820108,
+      "lowest_price": 29871.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 2100,
       "flight_count": 8,
-      "match_count": 0
-    }
-  },
-  {
-    "id": "route-23",
-    "issue_number": 23,
-    "issue_title": "[route] VN",
-    "origin": "TPE",
-    "destination": "SGN",
-    "trip_type": "round_trip",
-    "date": "2026-11-06",
-    "return_date": "2026-11-08",
-    "budget": 6000.0,
-    "currency": "TWD",
-    "notify_channel": "discord",
-    "max_duration_minutes": 240.0,
-    "active": true,
-    "latest": {
-      "checked_at": 1793819696,
-      "lowest_price": 7526.0,
-      "lowest_price_stops": 1,
-      "lowest_price_duration_minutes": 980,
-      "flight_count": 10,
       "match_count": 0
     }
   },
@@ -83,33 +60,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793819725,
-      "lowest_price": 15092.0,
+      "checked_at": 1793820138,
+      "lowest_price": 15091.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 180,
-      "flight_count": 8,
-      "match_count": 0
-    }
-  },
-  {
-    "id": "route-26",
-    "issue_number": 26,
-    "issue_title": "[route] VN3",
-    "origin": "TPE",
-    "destination": "SGN",
-    "trip_type": "round_trip",
-    "date": "2026-11-07",
-    "return_date": "2026-11-09",
-    "budget": 6000.0,
-    "currency": "TWD",
-    "notify_channel": "discord",
-    "max_duration_minutes": 240.0,
-    "active": true,
-    "latest": {
-      "checked_at": 1793819755,
-      "lowest_price": 9094.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 230,
       "flight_count": 8,
       "match_count": 0
     }
@@ -129,11 +83,57 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793819781,
-      "lowest_price": 9140.0,
+      "checked_at": 1793820163,
+      "lowest_price": 9138.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
+      "match_count": 0
+    }
+  },
+  {
+    "id": "route-26",
+    "issue_number": 26,
+    "issue_title": "[route] VN3",
+    "origin": "TPE",
+    "destination": "SGN",
+    "trip_type": "round_trip",
+    "date": "2026-11-07",
+    "return_date": "2026-11-09",
+    "budget": 6000.0,
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "max_duration_minutes": 240.0,
+    "active": true,
+    "latest": {
+      "checked_at": 1793820192,
+      "lowest_price": 9093.0,
+      "lowest_price_stops": 0,
+      "lowest_price_duration_minutes": 230,
+      "flight_count": 8,
+      "match_count": 0
+    }
+  },
+  {
+    "id": "route-23",
+    "issue_number": 23,
+    "issue_title": "[route] VN",
+    "origin": "TPE",
+    "destination": "SGN",
+    "trip_type": "round_trip",
+    "date": "2026-11-06",
+    "return_date": "2026-11-08",
+    "budget": 6000.0,
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "max_duration_minutes": 240.0,
+    "active": true,
+    "latest": {
+      "checked_at": 1793820218,
+      "lowest_price": 9146.0,
+      "lowest_price_stops": 0,
+      "lowest_price_duration_minutes": 230,
+      "flight_count": 10,
       "match_count": 0
     }
   }
