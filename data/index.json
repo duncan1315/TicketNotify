@@ -14,8 +14,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793849479,
-      "lowest_price": 9112.0,
+      "checked_at": 1793850078,
+      "lowest_price": 9115.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
@@ -37,8 +37,8 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1793849506,
-      "lowest_price": 29865.0,
+      "checked_at": 1793850108,
+      "lowest_price": 29864.0,
       "lowest_price_stops": null,
       "lowest_price_duration_minutes": 2100,
       "flight_count": 8,
@@ -60,10 +60,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793849530,
-      "lowest_price": 13776.0,
-      "lowest_price_stops": null,
-      "lowest_price_duration_minutes": 880,
+      "checked_at": 1793850136,
+      "lowest_price": 15239.0,
+      "lowest_price_stops": 0,
+      "lowest_price_duration_minutes": 180,
       "flight_count": 8,
       "match_count": 0
     }
@@ -83,8 +83,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793849559,
-      "lowest_price": 9142.0,
+      "checked_at": 1793850166,
+      "lowest_price": 9144.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
@@ -106,8 +106,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793849589,
-      "lowest_price": 9096.0,
+      "checked_at": 1793850197,
+      "lowest_price": 9099.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
@@ -129,8 +129,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793849615,
-      "lowest_price": 9158.0,
+      "checked_at": 1793850226,
+      "lowest_price": 9160.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
