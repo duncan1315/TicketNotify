@@ -14,8 +14,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793887884,
-      "lowest_price": 9058.0,
+      "checked_at": 1793888473,
+      "lowest_price": 9060.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
@@ -37,8 +37,8 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1793887918,
-      "lowest_price": 29865.0,
+      "checked_at": 1793888502,
+      "lowest_price": 29866.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 2100,
       "flight_count": 8,
@@ -60,10 +60,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793887953,
-      "lowest_price": 15502.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 180,
+      "checked_at": 1793888533,
+      "lowest_price": 13773.0,
+      "lowest_price_stops": 1,
+      "lowest_price_duration_minutes": 880,
       "flight_count": 8,
       "match_count": 0
     }
@@ -83,8 +83,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793887983,
-      "lowest_price": 9083.0,
+      "checked_at": 1793888562,
+      "lowest_price": 9084.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
@@ -106,8 +106,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793888013,
-      "lowest_price": 9042.0,
+      "checked_at": 1793888591,
+      "lowest_price": 9043.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
@@ -129,8 +129,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793888041,
-      "lowest_price": 9099.0,
+      "checked_at": 1793888615,
+      "lowest_price": 9101.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
