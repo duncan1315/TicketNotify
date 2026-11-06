@@ -14,8 +14,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793923291,
-      "lowest_price": 7563.0,
+      "checked_at": 1793923878,
+      "lowest_price": 7564.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 980,
       "flight_count": 8,
@@ -37,10 +37,10 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1793923326,
-      "lowest_price": 33105.0,
-      "lowest_price_stops": 1,
-      "lowest_price_duration_minutes": 1410,
+      "checked_at": 1793923904,
+      "lowest_price": 30967.0,
+      "lowest_price_stops": null,
+      "lowest_price_duration_minutes": 2100,
       "flight_count": 8,
       "match_count": 0
     }
@@ -60,7 +60,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793923352,
+      "checked_at": 1793923933,
       "lowest_price": 14845.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 180,
@@ -83,8 +83,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793923383,
-      "lowest_price": 9122.0,
+      "checked_at": 1793923962,
+      "lowest_price": 9118.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
@@ -106,8 +106,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793923413,
-      "lowest_price": 9163.0,
+      "checked_at": 1793923989,
+      "lowest_price": 9159.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 8,
@@ -129,9 +129,9 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1793923441,
-      "lowest_price": 7522.0,
-      "lowest_price_stops": 1,
+      "checked_at": 1793924016,
+      "lowest_price": 7523.0,
+      "lowest_price_stops": null,
       "lowest_price_duration_minutes": 980,
       "flight_count": 8,
       "match_count": 0
