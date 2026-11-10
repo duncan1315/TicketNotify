@@ -14,7 +14,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794345082,
+      "checked_at": 1794345674,
       "lowest_price": 9681.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 210,
@@ -37,8 +37,8 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1794345111,
-      "lowest_price": 30954.0,
+      "checked_at": 1794345708,
+      "lowest_price": 30953.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 2100,
       "flight_count": 8,
@@ -60,8 +60,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794345140,
-      "lowest_price": 11832.0,
+      "checked_at": 1794345737,
+      "lowest_price": 11831.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 185,
       "flight_count": 8,
@@ -83,7 +83,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794345165,
+      "checked_at": 1794345760,
       "lowest_price": 9314.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
@@ -106,7 +106,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794345192,
+      "checked_at": 1794345786,
       "lowest_price": 9681.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 210,
@@ -129,7 +129,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794345216,
+      "checked_at": 1794345810,
       "lowest_price": 9681.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 210,
