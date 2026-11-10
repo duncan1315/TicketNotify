@@ -14,11 +14,11 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794318085,
-      "lowest_price": 9124.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 210,
-      "flight_count": 10,
+      "checked_at": 1794318679,
+      "lowest_price": 8369.0,
+      "lowest_price_stops": 1,
+      "lowest_price_duration_minutes": 980,
+      "flight_count": 11,
       "match_count": 0
     }
   },
@@ -37,8 +37,8 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1794318120,
-      "lowest_price": 33076.0,
+      "checked_at": 1794318713,
+      "lowest_price": 33074.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 1410,
       "flight_count": 8,
@@ -60,8 +60,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794318154,
-      "lowest_price": 11482.0,
+      "checked_at": 1794318747,
+      "lowest_price": 11475.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 185,
       "flight_count": 8,
@@ -83,8 +83,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794318186,
-      "lowest_price": 9490.0,
+      "checked_at": 1794318778,
+      "lowest_price": 9485.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
       "flight_count": 12,
@@ -106,8 +106,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794318219,
-      "lowest_price": 7644.0,
+      "checked_at": 1794318809,
+      "lowest_price": 7581.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 205,
       "flight_count": 11,
@@ -129,8 +129,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794318245,
-      "lowest_price": 7644.0,
+      "checked_at": 1794318841,
+      "lowest_price": 7581.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 205,
       "flight_count": 11,
