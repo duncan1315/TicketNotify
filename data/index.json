@@ -14,8 +14,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794391886,
-      "lowest_price": 8053.0,
+      "checked_at": 1794392484,
+      "lowest_price": 8052.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 1020,
       "flight_count": 10,
@@ -37,8 +37,8 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1794391921,
-      "lowest_price": 33094.0,
+      "checked_at": 1794392519,
+      "lowest_price": 33093.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 1410,
       "flight_count": 8,
@@ -60,8 +60,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794391953,
-      "lowest_price": 11832.0,
+      "checked_at": 1794392551,
+      "lowest_price": 11831.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 185,
       "flight_count": 8,
@@ -83,10 +83,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794391984,
-      "lowest_price": 9236.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 210,
+      "checked_at": 1794392584,
+      "lowest_price": 8315.0,
+      "lowest_price_stops": 1,
+      "lowest_price_duration_minutes": 1020,
       "flight_count": 10,
       "match_count": 0
     }
@@ -106,8 +106,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794392016,
-      "lowest_price": 8370.0,
+      "checked_at": 1794392617,
+      "lowest_price": 8315.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 1020,
       "flight_count": 10,
@@ -129,9 +129,9 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794392044,
-      "lowest_price": 8370.0,
-      "lowest_price_stops": 1,
+      "checked_at": 1794392649,
+      "lowest_price": 8315.0,
+      "lowest_price_stops": null,
       "lowest_price_duration_minutes": 1020,
       "flight_count": 10,
       "match_count": 0
