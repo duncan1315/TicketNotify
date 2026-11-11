@@ -14,10 +14,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794354680,
-      "lowest_price": 9667.0,
+      "checked_at": 1794355292,
+      "lowest_price": 9639.0,
       "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 210,
+      "lowest_price_duration_minutes": 220,
       "flight_count": 8,
       "match_count": 0
     }
@@ -37,10 +37,10 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1794354713,
-      "lowest_price": 33094.0,
+      "checked_at": 1794355325,
+      "lowest_price": 30955.0,
       "lowest_price_stops": 1,
-      "lowest_price_duration_minutes": 1410,
+      "lowest_price_duration_minutes": 2100,
       "flight_count": 8,
       "match_count": 0
     }
@@ -60,8 +60,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794354743,
-      "lowest_price": 12493.0,
+      "checked_at": 1794355356,
+      "lowest_price": 12091.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 185,
       "flight_count": 8,
@@ -83,10 +83,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794354767,
-      "lowest_price": 9243.0,
+      "checked_at": 1794355386,
+      "lowest_price": 9211.0,
       "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 210,
+      "lowest_price_duration_minutes": 220,
       "flight_count": 8,
       "match_count": 0
     }
@@ -106,7 +106,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794354794,
+      "checked_at": 1794355413,
       "lowest_price": 9669.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 210,
@@ -129,7 +129,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794354818,
+      "checked_at": 1794355438,
       "lowest_price": 9669.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 210,
