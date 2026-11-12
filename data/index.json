@@ -14,7 +14,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794505886,
+      "checked_at": 1794506498,
       "lowest_price": 7321.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 960,
@@ -37,7 +37,7 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1794505917,
+      "checked_at": 1794506534,
       "lowest_price": 33264.0,
       "lowest_price_stops": null,
       "lowest_price_duration_minutes": 1015,
@@ -60,7 +60,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794505945,
+      "checked_at": 1794506562,
       "lowest_price": 12523.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 185,
@@ -83,7 +83,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794505970,
+      "checked_at": 1794506588,
       "lowest_price": 9510.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
@@ -106,7 +106,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794505999,
+      "checked_at": 1794506618,
       "lowest_price": 9580.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
@@ -129,7 +129,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794506022,
+      "checked_at": 1794506648,
       "lowest_price": 9580.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 230,
