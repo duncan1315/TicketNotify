@@ -14,10 +14,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794646274,
-      "lowest_price": 9395.0,
+      "checked_at": 1794646888,
+      "lowest_price": 9490.0,
       "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 210,
+      "lowest_price_duration_minutes": 230,
       "flight_count": 8,
       "match_count": 0
     }
@@ -37,11 +37,11 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1794646361,
-      "lowest_price": 33186.0,
-      "lowest_price_stops": 1,
-      "lowest_price_duration_minutes": 1015,
-      "flight_count": 8,
+      "checked_at": 1794646978,
+      "lowest_price": null,
+      "lowest_price_stops": null,
+      "lowest_price_duration_minutes": null,
+      "flight_count": 0,
       "match_count": 0
     }
   },
@@ -60,8 +60,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794646392,
-      "lowest_price": 12595.0,
+      "checked_at": 1794647010,
+      "lowest_price": 12080.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 185,
       "flight_count": 8,
@@ -83,10 +83,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794646421,
+      "checked_at": 1794647040,
       "lowest_price": 9694.0,
       "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 220,
+      "lowest_price_duration_minutes": 210,
       "flight_count": 8,
       "match_count": 0
     }
@@ -106,7 +106,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794646445,
+      "checked_at": 1794647068,
       "lowest_price": 8048.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 205,
@@ -129,7 +129,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794646473,
+      "checked_at": 1794647097,
       "lowest_price": 8048.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 205,
