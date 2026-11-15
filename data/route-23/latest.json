@@ -1,8 +1,8 @@
 {
-  "checked_at": 1794701029,
-  "lowest_price": 8086.0,
-  "lowest_price_stops": null,
-  "lowest_price_duration_minutes": 1045,
+  "checked_at": 1794701626,
+  "lowest_price": 8491.0,
+  "lowest_price_stops": 0,
+  "lowest_price_duration_minutes": 220,
   "flight_count": 10,
   "match_count": 0
 }
