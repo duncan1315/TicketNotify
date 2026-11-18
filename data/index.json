@@ -14,7 +14,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794996669,
+      "checked_at": 1794997294,
       "lowest_price": 9389.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 210,
@@ -37,8 +37,8 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1794996738,
-      "lowest_price": 25052.0,
+      "checked_at": 1794997362,
+      "lowest_price": 25051.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 1160,
       "flight_count": 8,
@@ -60,7 +60,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794996765,
+      "checked_at": 1794997396,
       "lowest_price": 14040.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 190,
@@ -83,10 +83,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794996793,
-      "lowest_price": 10568.0,
+      "checked_at": 1794997426,
+      "lowest_price": 10636.0,
       "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 205,
+      "lowest_price_duration_minutes": 230,
       "flight_count": 9,
       "match_count": 0
     }
@@ -106,10 +106,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794996822,
-      "lowest_price": 10579.0,
+      "checked_at": 1794997456,
+      "lowest_price": 10645.0,
       "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 205,
+      "lowest_price_duration_minutes": 230,
       "flight_count": 9,
       "match_count": 0
     }
@@ -129,10 +129,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1794996852,
-      "lowest_price": 10579.0,
+      "checked_at": 1794997481,
+      "lowest_price": 10645.0,
       "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 205,
+      "lowest_price_duration_minutes": 230,
       "flight_count": 9,
       "match_count": 0
     }
