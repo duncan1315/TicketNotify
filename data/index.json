@@ -1,51 +1,5 @@
 [
   {
-    "id": "route-25",
-    "issue_number": 25,
-    "issue_title": "[route] VN3",
-    "origin": "TPE",
-    "destination": "SGN",
-    "trip_type": "round_trip",
-    "date": "2026-11-07",
-    "return_date": "2026-11-08",
-    "budget": 6000.0,
-    "currency": "TWD",
-    "notify_channel": "discord",
-    "max_duration_minutes": 240.0,
-    "active": true,
-    "latest": {
-      "checked_at": 1795208508,
-      "lowest_price": 8213.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 220,
-      "flight_count": 8,
-      "match_count": 0
-    }
-  },
-  {
-    "id": "route-24",
-    "issue_number": 24,
-    "issue_title": "[route] VN2",
-    "origin": "TPE",
-    "destination": "SGN",
-    "trip_type": "round_trip",
-    "date": "2026-11-06",
-    "return_date": "2026-11-09",
-    "budget": 6000.0,
-    "currency": "TWD",
-    "notify_channel": "discord",
-    "max_duration_minutes": 240.0,
-    "active": true,
-    "latest": {
-      "checked_at": 1795208538,
-      "lowest_price": 8183.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 220,
-      "flight_count": 8,
-      "match_count": 0
-    }
-  },
-  {
     "id": "route-26",
     "issue_number": 26,
     "issue_title": "[route] VN3",
@@ -60,7 +14,30 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795208567,
+      "checked_at": 1795209407,
+      "lowest_price": 9177.0,
+      "lowest_price_stops": 0,
+      "lowest_price_duration_minutes": 220,
+      "flight_count": 8,
+      "match_count": 0
+    }
+  },
+  {
+    "id": "route-23",
+    "issue_number": 23,
+    "issue_title": "[route] VN",
+    "origin": "TPE",
+    "destination": "SGN",
+    "trip_type": "round_trip",
+    "date": "2026-11-06",
+    "return_date": "2026-11-08",
+    "budget": 6000.0,
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "max_duration_minutes": 240.0,
+    "active": true,
+    "latest": {
+      "checked_at": 1795209430,
       "lowest_price": 9177.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
@@ -83,8 +60,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795208595,
-      "lowest_price": 12597.0,
+      "checked_at": 1795209455,
+      "lowest_price": 12605.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 185,
       "flight_count": 8,
@@ -92,13 +69,13 @@
     }
   },
   {
-    "id": "route-23",
-    "issue_number": 23,
-    "issue_title": "[route] VN",
+    "id": "route-25",
+    "issue_number": 25,
+    "issue_title": "[route] VN3",
     "origin": "TPE",
     "destination": "SGN",
     "trip_type": "round_trip",
-    "date": "2026-11-06",
+    "date": "2026-11-07",
     "return_date": "2026-11-08",
     "budget": 6000.0,
     "currency": "TWD",
@@ -106,8 +83,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795208619,
-      "lowest_price": 9177.0,
+      "checked_at": 1795209485,
+      "lowest_price": 8214.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
       "flight_count": 8,
@@ -129,10 +106,33 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1795208679,
-      "lowest_price": 25059.0,
+      "checked_at": 1795209532,
+      "lowest_price": 25060.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 1160,
+      "flight_count": 8,
+      "match_count": 0
+    }
+  },
+  {
+    "id": "route-24",
+    "issue_number": 24,
+    "issue_title": "[route] VN2",
+    "origin": "TPE",
+    "destination": "SGN",
+    "trip_type": "round_trip",
+    "date": "2026-11-06",
+    "return_date": "2026-11-09",
+    "budget": 6000.0,
+    "currency": "TWD",
+    "notify_channel": "discord",
+    "max_duration_minutes": 240.0,
+    "active": true,
+    "latest": {
+      "checked_at": 1795209566,
+      "lowest_price": 8214.0,
+      "lowest_price_stops": 0,
+      "lowest_price_duration_minutes": 220,
       "flight_count": 8,
       "match_count": 0
     }
