@@ -14,8 +14,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795363879,
-      "lowest_price": 9398.0,
+      "checked_at": 1795364475,
+      "lowest_price": 9399.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 205,
       "flight_count": 9,
@@ -37,8 +37,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795363904,
-      "lowest_price": 9398.0,
+      "checked_at": 1795364499,
+      "lowest_price": 9399.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 205,
       "flight_count": 9,
@@ -60,8 +60,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795363939,
-      "lowest_price": 13888.0,
+      "checked_at": 1795364535,
+      "lowest_price": 13269.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 185,
       "flight_count": 8,
@@ -83,10 +83,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795363968,
-      "lowest_price": 9398.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 205,
+      "checked_at": 1795364695,
+      "lowest_price": 8513.0,
+      "lowest_price_stops": 1,
+      "lowest_price_duration_minutes": 480,
       "flight_count": 10,
       "match_count": 0
     }
@@ -106,8 +106,8 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1795364010,
-      "lowest_price": 25420.0,
+      "checked_at": 1795364737,
+      "lowest_price": 25421.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 1160,
       "flight_count": 8,
@@ -129,10 +129,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795364040,
-      "lowest_price": 9364.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 205,
+      "checked_at": 1795364770,
+      "lowest_price": 8769.0,
+      "lowest_price_stops": 1,
+      "lowest_price_duration_minutes": 480,
       "flight_count": 10,
       "match_count": 0
     }
