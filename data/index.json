@@ -14,11 +14,11 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795422686,
-      "lowest_price": 9462.0,
+      "checked_at": 1795423275,
+      "lowest_price": 9463.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 205,
-      "flight_count": 8,
+      "flight_count": 9,
       "match_count": 0
     }
   },
@@ -37,11 +37,11 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795422712,
-      "lowest_price": 9462.0,
+      "checked_at": 1795423302,
+      "lowest_price": 9463.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 205,
-      "flight_count": 8,
+      "flight_count": 9,
       "match_count": 0
     }
   },
@@ -60,8 +60,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795422739,
-      "lowest_price": 13259.0,
+      "checked_at": 1795423330,
+      "lowest_price": 13269.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 185,
       "flight_count": 8,
@@ -83,11 +83,11 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795422767,
+      "checked_at": 1795423360,
       "lowest_price": 10067.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 210,
-      "flight_count": 8,
+      "flight_count": 9,
       "match_count": 0
     }
   },
@@ -106,9 +106,9 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1795422802,
-      "lowest_price": 25420.0,
-      "lowest_price_stops": 1,
+      "checked_at": 1795423390,
+      "lowest_price": 25421.0,
+      "lowest_price_stops": null,
       "lowest_price_duration_minutes": 1160,
       "flight_count": 8,
       "match_count": 0
@@ -129,7 +129,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795422830,
+      "checked_at": 1795423418,
       "lowest_price": 10527.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 205,
