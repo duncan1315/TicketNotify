@@ -14,11 +14,11 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795430554,
-      "lowest_price": 9707.0,
+      "checked_at": 1795431075,
+      "lowest_price": 9697.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 205,
-      "flight_count": 9,
+      "flight_count": 8,
       "match_count": 0
     }
   },
@@ -37,11 +37,11 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795430579,
-      "lowest_price": 9709.0,
+      "checked_at": 1795431101,
+      "lowest_price": 9697.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 205,
-      "flight_count": 9,
+      "flight_count": 8,
       "match_count": 0
     }
   },
@@ -60,7 +60,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795430612,
+      "checked_at": 1795431133,
       "lowest_price": 13268.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 185,
@@ -83,11 +83,11 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795430642,
-      "lowest_price": 10121.0,
+      "checked_at": 1795431163,
+      "lowest_price": 10541.0,
       "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 210,
-      "flight_count": 9,
+      "lowest_price_duration_minutes": 205,
+      "flight_count": 8,
       "match_count": 0
     }
   },
@@ -106,7 +106,7 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1795430685,
+      "checked_at": 1795431222,
       "lowest_price": 25424.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 1160,
@@ -129,11 +129,11 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795430717,
+      "checked_at": 1795431253,
       "lowest_price": 10541.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 205,
-      "flight_count": 9,
+      "flight_count": 8,
       "match_count": 0
     }
   }
