@@ -14,10 +14,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795807885,
-      "lowest_price": 7345.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 220,
+      "checked_at": 1795808480,
+      "lowest_price": 6494.0,
+      "lowest_price_stops": 1,
+      "lowest_price_duration_minutes": 1045,
       "flight_count": 8,
       "match_count": 0
     }
@@ -37,10 +37,10 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795807911,
-      "lowest_price": 7345.0,
-      "lowest_price_stops": 0,
-      "lowest_price_duration_minutes": 220,
+      "checked_at": 1795808505,
+      "lowest_price": 6494.0,
+      "lowest_price_stops": null,
+      "lowest_price_duration_minutes": 1045,
       "flight_count": 8,
       "match_count": 0
     }
@@ -60,8 +60,8 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795807941,
-      "lowest_price": 11429.0,
+      "checked_at": 1795808537,
+      "lowest_price": 11430.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 185,
       "flight_count": 8,
@@ -83,11 +83,11 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795807967,
+      "checked_at": 1795808562,
       "lowest_price": 9245.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
-      "flight_count": 9,
+      "flight_count": 10,
       "match_count": 0
     }
   },
@@ -106,9 +106,9 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1795807999,
+      "checked_at": 1795808591,
       "lowest_price": 24976.0,
-      "lowest_price_stops": 1,
+      "lowest_price_stops": null,
       "lowest_price_duration_minutes": 1160,
       "flight_count": 8,
       "match_count": 0
@@ -129,7 +129,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795808024,
+      "checked_at": 1795808617,
       "lowest_price": 8213.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
