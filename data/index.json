@@ -14,11 +14,11 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795878096,
+      "checked_at": 1795878699,
       "lowest_price": 6488.0,
       "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 1045,
-      "flight_count": 11,
+      "flight_count": 10,
       "match_count": 0
     }
   },
@@ -37,9 +37,9 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795878128,
+      "checked_at": 1795878768,
       "lowest_price": 6488.0,
-      "lowest_price_stops": null,
+      "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 1045,
       "flight_count": 11,
       "match_count": 0
@@ -60,7 +60,7 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795878164,
+      "checked_at": 1795878802,
       "lowest_price": 11429.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 185,
@@ -83,11 +83,11 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795878194,
+      "checked_at": 1795878834,
       "lowest_price": 9194.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
-      "flight_count": 8,
+      "flight_count": 9,
       "match_count": 0
     }
   },
@@ -106,9 +106,9 @@
     "max_duration_minutes": 900.0,
     "active": true,
     "latest": {
-      "checked_at": 1795878227,
+      "checked_at": 1795878869,
       "lowest_price": 24976.0,
-      "lowest_price_stops": null,
+      "lowest_price_stops": 1,
       "lowest_price_duration_minutes": 1160,
       "flight_count": 8,
       "match_count": 0
@@ -129,11 +129,11 @@
     "max_duration_minutes": 240.0,
     "active": true,
     "latest": {
-      "checked_at": 1795878258,
+      "checked_at": 1795878899,
       "lowest_price": 8183.0,
       "lowest_price_stops": 0,
       "lowest_price_duration_minutes": 220,
-      "flight_count": 8,
+      "flight_count": 10,
       "match_count": 0
     }
   }
